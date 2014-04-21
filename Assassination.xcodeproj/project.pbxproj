@@ -1,0 +1,471 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		6BCA48FA1904B37500977B33 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BCA48F91904B37500977B33 /* Foundation.framework */; };
+		6BCA48FC1904B37500977B33 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BCA48FB1904B37500977B33 /* CoreGraphics.framework */; };
+		6BCA48FE1904B37500977B33 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BCA48FD1904B37500977B33 /* UIKit.framework */; };
+		6BCA49041904B37500977B33 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6BCA49021904B37500977B33 /* InfoPlist.strings */; };
+		6BCA49061904B37500977B33 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCA49051904B37500977B33 /* main.m */; };
+		6BCA490A1904B37500977B33 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCA49091904B37500977B33 /* AppDelegate.m */; };
+		6BCA490D1904B37500977B33 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6BCA490B1904B37500977B33 /* Main.storyboard */; };
+		6BCA49101904B37500977B33 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCA490F1904B37500977B33 /* ViewController.m */; };
+		6BCA49121904B37500977B33 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6BCA49111904B37500977B33 /* Images.xcassets */; };
+		6BCA49191904B37500977B33 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BCA49181904B37500977B33 /* XCTest.framework */; };
+		6BCA491A1904B37500977B33 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BCA48F91904B37500977B33 /* Foundation.framework */; };
+		6BCA491B1904B37500977B33 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BCA48FD1904B37500977B33 /* UIKit.framework */; };
+		6BCA49231904B37500977B33 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6BCA49211904B37500977B33 /* InfoPlist.strings */; };
+		6BCA49251904B37500977B33 /* AssassinationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCA49241904B37500977B33 /* AssassinationTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		6BCA491C1904B37500977B33 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6BCA48EE1904B37400977B33 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6BCA48F51904B37500977B33;
+			remoteInfo = Assassination;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		6BCA48F61904B37500977B33 /* Assassination.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Assassination.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6BCA48F91904B37500977B33 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		6BCA48FB1904B37500977B33 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		6BCA48FD1904B37500977B33 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		6BCA49011904B37500977B33 /* Assassination-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Assassination-Info.plist"; sourceTree = "<group>"; };
+		6BCA49031904B37500977B33 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		6BCA49051904B37500977B33 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		6BCA49071904B37500977B33 /* Assassination-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Assassination-Prefix.pch"; sourceTree = "<group>"; };
+		6BCA49081904B37500977B33 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		6BCA49091904B37500977B33 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		6BCA490C1904B37500977B33 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		6BCA490E1904B37500977B33 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		6BCA490F1904B37500977B33 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		6BCA49111904B37500977B33 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		6BCA49171904B37500977B33 /* AssassinationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AssassinationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6BCA49181904B37500977B33 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		6BCA49201904B37500977B33 /* AssassinationTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "AssassinationTests-Info.plist"; sourceTree = "<group>"; };
+		6BCA49221904B37500977B33 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		6BCA49241904B37500977B33 /* AssassinationTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AssassinationTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		6BCA48F31904B37500977B33 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6BCA48FC1904B37500977B33 /* CoreGraphics.framework in Frameworks */,
+				6BCA48FE1904B37500977B33 /* UIKit.framework in Frameworks */,
+				6BCA48FA1904B37500977B33 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6BCA49141904B37500977B33 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6BCA49191904B37500977B33 /* XCTest.framework in Frameworks */,
+				6BCA491B1904B37500977B33 /* UIKit.framework in Frameworks */,
+				6BCA491A1904B37500977B33 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		6BCA48ED1904B37400977B33 = {
+			isa = PBXGroup;
+			children = (
+				6BCA48FF1904B37500977B33 /* Assassination */,
+				6BCA491E1904B37500977B33 /* AssassinationTests */,
+				6BCA48F81904B37500977B33 /* Frameworks */,
+				6BCA48F71904B37500977B33 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		6BCA48F71904B37500977B33 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6BCA48F61904B37500977B33 /* Assassination.app */,
+				6BCA49171904B37500977B33 /* AssassinationTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6BCA48F81904B37500977B33 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6BCA48F91904B37500977B33 /* Foundation.framework */,
+				6BCA48FB1904B37500977B33 /* CoreGraphics.framework */,
+				6BCA48FD1904B37500977B33 /* UIKit.framework */,
+				6BCA49181904B37500977B33 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6BCA48FF1904B37500977B33 /* Assassination */ = {
+			isa = PBXGroup;
+			children = (
+				6BCA49081904B37500977B33 /* AppDelegate.h */,
+				6BCA49091904B37500977B33 /* AppDelegate.m */,
+				6BCA490B1904B37500977B33 /* Main.storyboard */,
+				6BCA490E1904B37500977B33 /* ViewController.h */,
+				6BCA490F1904B37500977B33 /* ViewController.m */,
+				6BCA49111904B37500977B33 /* Images.xcassets */,
+				6BCA49001904B37500977B33 /* Supporting Files */,
+			);
+			path = Assassination;
+			sourceTree = "<group>";
+		};
+		6BCA49001904B37500977B33 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				6BCA49011904B37500977B33 /* Assassination-Info.plist */,
+				6BCA49021904B37500977B33 /* InfoPlist.strings */,
+				6BCA49051904B37500977B33 /* main.m */,
+				6BCA49071904B37500977B33 /* Assassination-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		6BCA491E1904B37500977B33 /* AssassinationTests */ = {
+			isa = PBXGroup;
+			children = (
+				6BCA49241904B37500977B33 /* AssassinationTests.m */,
+				6BCA491F1904B37500977B33 /* Supporting Files */,
+			);
+			path = AssassinationTests;
+			sourceTree = "<group>";
+		};
+		6BCA491F1904B37500977B33 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				6BCA49201904B37500977B33 /* AssassinationTests-Info.plist */,
+				6BCA49211904B37500977B33 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		6BCA48F51904B37500977B33 /* Assassination */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6BCA49281904B37500977B33 /* Build configuration list for PBXNativeTarget "Assassination" */;
+			buildPhases = (
+				6BCA48F21904B37500977B33 /* Sources */,
+				6BCA48F31904B37500977B33 /* Frameworks */,
+				6BCA48F41904B37500977B33 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Assassination;
+			productName = Assassination;
+			productReference = 6BCA48F61904B37500977B33 /* Assassination.app */;
+			productType = "com.apple.product-type.application";
+		};
+		6BCA49161904B37500977B33 /* AssassinationTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6BCA492B1904B37500977B33 /* Build configuration list for PBXNativeTarget "AssassinationTests" */;
+			buildPhases = (
+				6BCA49131904B37500977B33 /* Sources */,
+				6BCA49141904B37500977B33 /* Frameworks */,
+				6BCA49151904B37500977B33 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6BCA491D1904B37500977B33 /* PBXTargetDependency */,
+			);
+			name = AssassinationTests;
+			productName = AssassinationTests;
+			productReference = 6BCA49171904B37500977B33 /* AssassinationTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		6BCA48EE1904B37400977B33 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = "Hikari Senju";
+				TargetAttributes = {
+					6BCA49161904B37500977B33 = {
+						TestTargetID = 6BCA48F51904B37500977B33;
+					};
+				};
+			};
+			buildConfigurationList = 6BCA48F11904B37500977B33 /* Build configuration list for PBXProject "Assassination" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 6BCA48ED1904B37400977B33;
+			productRefGroup = 6BCA48F71904B37500977B33 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				6BCA48F51904B37500977B33 /* Assassination */,
+				6BCA49161904B37500977B33 /* AssassinationTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		6BCA48F41904B37500977B33 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6BCA49121904B37500977B33 /* Images.xcassets in Resources */,
+				6BCA49041904B37500977B33 /* InfoPlist.strings in Resources */,
+				6BCA490D1904B37500977B33 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6BCA49151904B37500977B33 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6BCA49231904B37500977B33 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		6BCA48F21904B37500977B33 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6BCA49101904B37500977B33 /* ViewController.m in Sources */,
+				6BCA490A1904B37500977B33 /* AppDelegate.m in Sources */,
+				6BCA49061904B37500977B33 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6BCA49131904B37500977B33 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6BCA49251904B37500977B33 /* AssassinationTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		6BCA491D1904B37500977B33 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6BCA48F51904B37500977B33 /* Assassination */;
+			targetProxy = 6BCA491C1904B37500977B33 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		6BCA49021904B37500977B33 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6BCA49031904B37500977B33 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		6BCA490B1904B37500977B33 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6BCA490C1904B37500977B33 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		6BCA49211904B37500977B33 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6BCA49221904B37500977B33 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		6BCA49261904B37500977B33 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		6BCA49271904B37500977B33 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		6BCA49291904B37500977B33 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Assassination/Assassination-Prefix.pch";
+				INFOPLIST_FILE = "Assassination/Assassination-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		6BCA492A1904B37500977B33 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Assassination/Assassination-Prefix.pch";
+				INFOPLIST_FILE = "Assassination/Assassination-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		6BCA492C1904B37500977B33 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Assassination.app/Assassination";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Assassination/Assassination-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "AssassinationTests/AssassinationTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		6BCA492D1904B37500977B33 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Assassination.app/Assassination";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Assassination/Assassination-Prefix.pch";
+				INFOPLIST_FILE = "AssassinationTests/AssassinationTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		6BCA48F11904B37500977B33 /* Build configuration list for PBXProject "Assassination" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6BCA49261904B37500977B33 /* Debug */,
+				6BCA49271904B37500977B33 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6BCA49281904B37500977B33 /* Build configuration list for PBXNativeTarget "Assassination" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6BCA49291904B37500977B33 /* Debug */,
+				6BCA492A1904B37500977B33 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		6BCA492B1904B37500977B33 /* Build configuration list for PBXNativeTarget "AssassinationTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6BCA492C1904B37500977B33 /* Debug */,
+				6BCA492D1904B37500977B33 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 6BCA48EE1904B37400977B33 /* Project object */;
+}
