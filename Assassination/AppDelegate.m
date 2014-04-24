@@ -5,14 +5,38 @@
 //  Created by Hikari Senju on 4/20/14.
 //  Copyright (c) 2014 Hikari Senju. All rights reserved.
 //
+#import <Parse/Parse.h>
 
 #import "AppDelegate.h"
+#import "ViewController.h"
+
+@interface AppDelegate () <CBPeripheralManagerDelegate>
+
+@property (strong, nonatomic) CBPeripheralManager *peripheralManager;
+@property (strong, nonatomic) CBMutableCharacteristic *transferCharacteristic;
+@property (nonatomic, strong) NSMutableArray *centrals;
+
+@end
 
 @implementation AppDelegate
+
+@synthesize window = _window;
+@synthesize viewController = _viewController;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    [Parse setApplicationId:@"ULvRGjhyJKZ5w7bDMdJuGd4rx8J6XJDhlbd0tp4e" clientKey:@"ZGgO4tIqYDDedRtpTjwHl4cWa7M13kpcGmenGIzd"];
+    if ([PFUser currentUser]) {
+        UINavigationController *navigationController = (UINavigationController *)self.window.rootViewController;
+        UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
+        ViewController *viewController = (ViewController*)[mainStoryboard instantiateViewControllerWithIdentifier: @"assassinate"];
+        [navigationController pushViewController:viewController animated:YES];
+
+	}
+	
+	[PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+    
     return YES;
 }
 							
@@ -26,6 +50,10 @@
 {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    _peripheralManager = [[CBPeripheralManager alloc] initWithDelegate:self queue:nil];
+    
+    _centrals = [NSMutableArray array];
+
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
@@ -42,5 +70,35 @@
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+
+#pragma mark - CBPeripheral delegate methods
+
+- (void)peripheralManagerDidUpdateState:(CBPeripheralManager *)peripheral
+{
+    if (peripheral.state != CBPeripheralManagerStatePoweredOn) {
+        return;
+    }
+    
+    NSLog(@"PeripheralManager powered on.");
+    
+    self.transferCharacteristic = [[CBMutableCharacteristic alloc] initWithType:[CBUUID UUIDWithString: CHARACTERISTIC_UUID] properties:CBCharacteristicPropertyNotify value:nil permissions:CBAttributePermissionsReadable];
+    
+    CBMutableService *transferService = [[CBMutableService alloc] initWithType:[CBUUID UUIDWithString:SERVICE_UUID] primary:YES];
+    
+    transferService.characteristics = @[self.transferCharacteristic];
+    
+    [self.peripheralManager addService:transferService];
+    
+    [self.peripheralManager startAdvertising:@{ CBAdvertisementDataServiceUUIDsKey : @[[CBUUID UUIDWithString:SERVICE_UUID]], CBAdvertisementDataLocalNameKey : @"EstimoteBeacon" }];
+    
+    NSLog(@"PeripheralManager is broadcasting (%@).", SERVICE_UUID);
+}
+
+- (void)peripheralManager:(CBPeripheralManager *)peripheral central:(CBCentral *)central didSubscribeToCharacteristic:(CBCharacteristic *)characteristic
+{
+    [_centrals addObject:central];
+}
+
+
 
 @end

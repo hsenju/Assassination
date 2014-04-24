@@ -7,6 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreBluetooth/CoreBluetooth.h>
+#import "BluetoothServices.h"
+#import "CoreBluetoothController.h"
 
 @interface ViewController : UIViewController
 
