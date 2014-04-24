@@ -32,6 +32,7 @@
      [_bluetoothController findPeripherals];*/
     
     [_bluetoothController startReadingRSSI];
+    NSLog(@"central");
 }
 
 #pragma mark - CoreBluetooth delegate methods
