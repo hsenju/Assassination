@@ -14,6 +14,7 @@
 @property (nonatomic, strong) NSTimer *readRSSITimer;
 @property (nonatomic, strong) NSMutableArray *rssiArray;
 @property (nonatomic, assign) int rssiArrayIndex;
+@property (nonatomic, strong) NSString* targetuuid;
 
 @end
 
@@ -28,6 +29,7 @@
         _rssiArrayIndex = 0;
         _isConnected = NO;
 	}
+
     
     return self;
 }
@@ -36,17 +38,25 @@
 {
 	static CoreBluetoothController *this = nil;
     
-	if (!this)
-		this = [[CoreBluetoothController alloc] init];
+	//if (!this)
+    this = [[CoreBluetoothController alloc] init];
     
 	return this;
 }
 
 - (void)centralManagerDidUpdateState:(CBCentralManager *)central
 {    
-    if (central.state == CBCentralManagerStatePoweredOn) 
-        [self findPeripherals];
-    
+    if (central.state == CBCentralManagerStatePoweredOn){
+        PFQuery *findtarget = [PFQuery queryWithClassName:@"Targets"];
+        [findtarget whereKey:@"assassin" equalTo: [[PFUser currentUser] objectForKey:@"uuid"]];
+        [findtarget getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+            if (error) {
+                //[TestFlight passCheckpoint:@"edit photo error in geo query"];
+            } else {
+                self.targetuuid = [object objectForKey:@"target"];
+                [self findPeripherals];
+            }}];
+    }
     else {
         
         //should invoke a delegate method
@@ -54,13 +64,13 @@
 }
 
 - (void)findPeripherals;
-{    
+{
     if (self.manager.state != CBCentralManagerStatePoweredOn)
         NSLog (@"CoreBluetooth not initialized correctly!");
     
     else {
         
-        NSArray *uuidArray = [NSArray arrayWithObjects:[CBUUID UUIDWithString:SERVICE_UUID], nil];
+        NSArray *uuidArray = [NSArray arrayWithObjects:[CBUUID UUIDWithString:self.targetuuid], nil];
         NSDictionary *options = [NSDictionary dictionaryWithObject: [NSNumber numberWithBool:NO] forKey:CBCentralManagerScanOptionAllowDuplicatesKey];
         
         [self.manager scanForPeripheralsWithServices:uuidArray options:options];
@@ -86,7 +96,7 @@
     peripheral.delegate = self;
     
     // Search only for services that match our UUID
-    [peripheral discoverServices:@[[CBUUID UUIDWithString:SERVICE_UUID]]];
+    [peripheral discoverServices:@[[CBUUID UUIDWithString:self.targetuuid]]];
 }
 
 - (void)centralManager:(CBCentralManager *)central didDisconnectPeripheral:(CBPeripheral *)peripheral error:(NSError *)error

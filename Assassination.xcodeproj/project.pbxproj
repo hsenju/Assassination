@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6BC5B9DC190CDECC00E01566 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BC5B9DB190CDECC00E01566 /* FacebookSDK.framework */; };
 		6BCA48FA1904B37500977B33 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BCA48F91904B37500977B33 /* Foundation.framework */; };
 		6BCA48FC1904B37500977B33 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BCA48FB1904B37500977B33 /* CoreGraphics.framework */; };
 		6BCA48FE1904B37500977B33 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BCA48FD1904B37500977B33 /* UIKit.framework */; };
@@ -48,6 +49,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6BC5B9DB190CDECC00E01566 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
 		6BCA48F61904B37500977B33 /* Assassination.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Assassination.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BCA48F91904B37500977B33 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6BCA48FB1904B37500977B33 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -106,6 +108,7 @@
 				6BCA48FE1904B37500977B33 /* UIKit.framework in Frameworks */,
 				6BCA49CF1905812F00977B33 /* Parse.framework in Frameworks */,
 				6BCA48FA1904B37500977B33 /* Foundation.framework in Frameworks */,
+				6BC5B9DC190CDECC00E01566 /* FacebookSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -144,6 +147,7 @@
 		6BCA48F81904B37500977B33 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6BC5B9DB190CDECC00E01566 /* FacebookSDK.framework */,
 				6BCA49E01905A53400977B33 /* SystemConfiguration.framework */,
 				6BCA49DE1905A52100977B33 /* StoreKit.framework */,
 				6BCA49DC1905A51800977B33 /* Security.framework */,
@@ -383,7 +387,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Hikari Senju (VYZ5P5363L)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Hikari Senju (VYZ5P5363L)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -401,6 +406,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "0F54846C-5583-47B9-80D1-DC9B3AF89243";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -421,7 +427,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Hikari Senju (VYZ5P5363L)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Hikari Senju (VYZ5P5363L)";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -432,6 +439,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				PROVISIONING_PROFILE = "0F54846C-5583-47B9-80D1-DC9B3AF89243";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -442,16 +450,19 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Hikari Senju (VYZ5P5363L)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/hsenju/Downloads,
 					/Users/hsenju/Documents,
+					/Users/hsenju/Documents/FacebookSDK,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Assassination/Assassination-Prefix.pch";
 				INFOPLIST_FILE = "Assassination/Assassination-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "0F54846C-5583-47B9-80D1-DC9B3AF89243";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -461,16 +472,19 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Hikari Senju (VYZ5P5363L)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/hsenju/Downloads,
 					/Users/hsenju/Documents,
+					/Users/hsenju/Documents/FacebookSDK,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Assassination/Assassination-Prefix.pch";
 				INFOPLIST_FILE = "Assassination/Assassination-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "0F54846C-5583-47B9-80D1-DC9B3AF89243";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

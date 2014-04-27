@@ -36,7 +36,7 @@
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textInputChanged:) name:UITextFieldTextDidChangeNotification object:self.email];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textInputChanged:) name:UITextFieldTextDidChangeNotification object:self.password];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textInputChanged:) name:UITextFieldTextDidChangeNotification object:self.passwordconfirm];
-    self.name.placeholder = @"Name";
+    self.name.placeholder = @"Full Name";
     self.email.placeholder = @"Email";
     self.password.placeholder = @"Password";
     self.passwordconfirm.placeholder = @"Password Again";
@@ -108,6 +108,8 @@
 - (void)processFieldEntries {
 	NSString *name = self.name.text;
 	NSString *password = self.password.text;
+	NSString *email = self.email.text;
+    NSString *uuid = [[NSUUID UUID] UUIDString];
     
     UIActivityIndicatorView *activityView=[[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
     activityView.center=self.view.center;
@@ -117,6 +119,8 @@
 	PFUser *user = [PFUser user];
 	user.username = name;
 	user.password = password;
+    user.email = email;
+    [user setObject:uuid forKey:@"uuid"];
 	[user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
 		if (error) {
 			UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:[[error userInfo] objectForKey:@"error"] message:nil delegate:self cancelButtonTitle:nil otherButtonTitles:@"Ok", nil];

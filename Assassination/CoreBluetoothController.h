@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreBluetooth/CoreBluetooth.h>
+#import <Parse/Parse.h>
 
 @protocol CoreBluetoothDelegate
 @optional
