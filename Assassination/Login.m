@@ -8,9 +8,12 @@
 
 #import "Login.h"
 #import "ViewController.h"
+#import "MBProgressHUD.h"
 #import <Parse/Parse.h>
 
 @interface Login ()
+
+@property (nonatomic, strong) MBProgressHUD *hud;
 
 - (void)processFieldEntries;
 - (void)textInputChanged:(NSNotification *)note;
@@ -35,10 +38,17 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textInputChanged:) name:UITextFieldTextDidChangeNotification object:self.name];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textInputChanged:) name:UITextFieldTextDidChangeNotification object:self.password];
 	self.done.enabled = NO;
-    self.name.placeholder = @"Name";
+    self.name.placeholder = @"Email";
     self.password.placeholder = @"Password";
     self.password.secureTextEntry = YES;
-    // Do any additional setup after loading the view.
+    
+    self.navigationController.navigationBarHidden = NO;
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
+    self.navigationController.navigationBar.shadowImage = [UIImage new];
+    self.navigationController.navigationBar.translucent = YES;
+    
+    UIWindow *window = [UIApplication sharedApplication].keyWindow;
+    window.tintColor = [UIColor whiteColor];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -85,6 +95,10 @@
 
 - (void)processFieldEntries {
 
+    self.hud = [MBProgressHUD showHUDAddedTo:self.view.superview animated:YES];
+    self.hud.labelText = NSLocalizedString(@"Logging in", nil);
+    self.hud.dimBackground = YES;
+    
 	NSString *username = self.name.text;
 	NSString *password = self.password.text;
 	NSString *noUsernameText = @"username";
@@ -135,9 +149,10 @@
     
 	[PFUser logInWithUsernameInBackground:username password:password block:^(PFUser *user, NSError *error) {
 		[activityView stopAnimating];
-        
+        [MBProgressHUD hideHUDForView:self.view.superview animated:NO];
 		if (user) {
             [self performSegueWithIdentifier: @"LoginDone" sender: self];
+            
 		} else {
 			// Didn't get a user.
 			NSLog(@"%s didn't get a user!", __PRETTY_FUNCTION__);

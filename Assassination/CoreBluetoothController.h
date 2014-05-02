@@ -1,9 +1,9 @@
 //
-//  CoreBluetoothController.h
-//  Estimote Simulator
+//  AppDelegate.m
+//  Assassination
 //
-//  Created by Grzegorz Krukiewicz-Gacek on 24.07.2013.
-//  Copyright (c) 2013 Estimote, Inc. All rights reserved.
+//  Created by Hikari Senju on 4/20/14.
+//  Copyright (c) 2014 Hikari Senju. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>

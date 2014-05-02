@@ -1,9 +1,9 @@
 //
-//  CoreBluetoothController.m
-//  Estimote Simulator
+//  AppDelegate.m
+//  Assassination
 //
-//  Created by Grzegorz Krukiewicz-Gacek on 24.07.2013.
-//  Copyright (c) 2013 Estimote, Inc. All rights reserved.
+//  Created by Hikari Senju on 4/20/14.
+//  Copyright (c) 2014 Hikari Senju. All rights reserved.
 //
 
 #import "CoreBluetoothController.h"
@@ -48,18 +48,19 @@
 {    
     if (central.state == CBCentralManagerStatePoweredOn){
         PFQuery *findtarget = [PFQuery queryWithClassName:@"Targets"];
-        [findtarget whereKey:@"assassin" equalTo: [[PFUser currentUser] objectForKey:@"uuid"]];
+        [findtarget whereKey:@"assassin" equalTo: [[PFUser currentUser] objectForKey:@"email"]];
         [findtarget getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
-            if (error) {
-                //[TestFlight passCheckpoint:@"edit photo error in geo query"];
+            if (error){
             } else {
-                self.targetuuid = [object objectForKey:@"target"];
-                [self findPeripherals];
+                PFQuery *finduuid = [PFUser query];
+                [finduuid whereKey:@"email" equalTo: [object objectForKey:@"target"]];
+                [finduuid getFirstObjectInBackgroundWithBlock:^(PFObject *objectb, NSError *error) {
+                    if (error) {
+                    } else {
+                        self.targetuuid = [objectb objectForKey:@"uuid"];
+                        [self findPeripherals];
+                    }}];
             }}];
-    }
-    else {
-        
-        //should invoke a delegate method
     }
 }
 

@@ -8,9 +8,12 @@
 
 #import "Register.h"
 #import "ViewController.h"
+#import "MBProgressHUD.h"
 #import <Parse/Parse.h>
 
 @interface Register ()
+
+@property (nonatomic, strong) MBProgressHUD *hud;
 
 - (void)processFieldEntries;
 - (void)textInputChanged:(NSNotification *)note;
@@ -32,27 +35,32 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textInputChanged:) name:UITextFieldTextDidChangeNotification object:self.name];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textInputChanged:) name:UITextFieldTextDidChangeNotification object:self.email];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textInputChanged:) name:UITextFieldTextDidChangeNotification object:self.password];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textInputChanged:) name:UITextFieldTextDidChangeNotification object:self.passwordconfirm];
-    self.name.placeholder = @"Full Name";
     self.email.placeholder = @"Email";
     self.password.placeholder = @"Password";
     self.passwordconfirm.placeholder = @"Password Again";
     self.password.secureTextEntry = YES;
     self.passwordconfirm.secureTextEntry = YES;
     self.done.enabled = NO;
+    
+    self.navigationController.navigationBarHidden = NO;
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
+    self.navigationController.navigationBar.shadowImage = [UIImage new];
+    self.navigationController.navigationBar.translucent = YES;
+    
+    UIWindow *window = [UIApplication sharedApplication].keyWindow;
+    window.tintColor = [UIColor whiteColor];
     // Do any additional setup after loading the view.
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-	[self.name becomeFirstResponder];
+	[self.email becomeFirstResponder];
 	[super viewWillAppear:animated];
 }
 
 - (void)dealloc {
-	[[NSNotificationCenter defaultCenter] removeObserver:self name:UITextFieldTextDidChangeNotification object:self.name];
 	[[NSNotificationCenter defaultCenter] removeObserver:self name:UITextFieldTextDidChangeNotification object:self.email];
 	[[NSNotificationCenter defaultCenter] removeObserver:self name:UITextFieldTextDidChangeNotification object:self.password];
 	[[NSNotificationCenter defaultCenter] removeObserver:self name:UITextFieldTextDidChangeNotification object:self.passwordconfirm];
@@ -61,9 +69,6 @@
 #pragma mark - UITextFieldDelegate
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
-	if (textField == self.name) {
-		[self.email becomeFirstResponder];
-	}
 	if (textField == self.email) {
 		[self.password becomeFirstResponder];
 	}
@@ -79,9 +84,7 @@
 
 - (BOOL)shouldEnableDoneButton {
 	BOOL enableDoneButton = NO;
-	if (self.name.text != nil &&
-		self.name.text.length > 0 &&
-		self.email.text != nil &&
+	if (self.email.text != nil &&
 		self.email.text.length > 0 &&
 		self.password.text != nil &&
 		self.password.text.length > 0 &&
@@ -98,7 +101,6 @@
 }
 
 - (IBAction)done:(id)sender {
-	[self.name resignFirstResponder];
     [self.email resignFirstResponder];
 	[self.password resignFirstResponder];
 	[self.passwordconfirm resignFirstResponder];
@@ -106,7 +108,11 @@
 }
 
 - (void)processFieldEntries {
-	NSString *name = self.name.text;
+    self.hud = [MBProgressHUD showHUDAddedTo:self.view.superview animated:YES];
+    self.hud.labelText = NSLocalizedString(@"Registering", nil);
+    self.hud.dimBackground = YES;
+    
+	NSString *name = self.email.text;
 	NSString *password = self.password.text;
 	NSString *email = self.email.text;
     NSString *uuid = [[NSUUID UUID] UUIDString];
@@ -123,18 +129,19 @@
     [user setObject:uuid forKey:@"uuid"];
 	[user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
 		if (error) {
+            [MBProgressHUD hideHUDForView:self.view.superview animated:NO];
 			UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:[[error userInfo] objectForKey:@"error"] message:nil delegate:self cancelButtonTitle:nil otherButtonTitles:@"Ok", nil];
 			[alertView show];
 			self.done.enabled = [self shouldEnableDoneButton];
             [activityView stopAnimating];
 			// Bring the keyboard back up, because they'll probably need to change something.
-			[self.name becomeFirstResponder];
+			[self.email becomeFirstResponder];
 			return;
 		}
         
 		// Success!
         [activityView stopAnimating];
-        
+        [MBProgressHUD hideHUDForView:self.navigationController.presentedViewController.view animated:NO];
         [self performSegueWithIdentifier: @"RegisterDone" sender: self];
         
 	}];
