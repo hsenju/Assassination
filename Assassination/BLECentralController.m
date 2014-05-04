@@ -7,7 +7,6 @@
 //
 
 #import "BLECentralController.h"
-#import "BluetoothServices.h"
 
 @interface BLECentralController ()
 
@@ -24,7 +23,7 @@
 	self = [super init];
     
 	if(self) {
-        
+        //initialize the cbcentral manager to start scouting for the uuid of the target
 		self.manager = [[CBCentralManager alloc] initWithDelegate:self queue:nil];
         _rssiArrayIndex = 0;
         _connected = NO;
@@ -36,15 +35,15 @@
 
 + (id)sharedInstance
 {
+    //initialize the shared instance of this bluetooth low energy central controller
 	static BLECentralController *this = nil;
-    
     this = [[BLECentralController alloc] init];
-    
 	return this;
 }
 
 - (void)centralManagerDidUpdateState:(CBCentralManager *)central
-{    
+{
+    //lookup on parse for the unique identifier of the target. this is the uuid we would be scouting for
     if (central.state == CBCentralManagerStatePoweredOn){
         PFQuery *findtarget = [PFQuery queryWithClassName:@"Targets"];
         [findtarget whereKey:@"assassin" equalTo: [[PFUser currentUser] objectForKey:@"email"]];
@@ -65,11 +64,11 @@
 
 - (void)findTargets;
 {
+    //start scanning for the unique identifier of the target
     if (self.manager.state == CBCentralManagerStatePoweredOn)
     {
         NSArray *uuidArray = [NSArray arrayWithObjects:[CBUUID UUIDWithString:self.targetuuid], nil];
         NSDictionary *options = [NSDictionary dictionaryWithObject: [NSNumber numberWithBool:NO] forKey:CBCentralManagerScanOptionAllowDuplicatesKey];
-        
         [self.manager scanForPeripheralsWithServices:uuidArray options:options];
     }
 }
@@ -78,12 +77,14 @@
 
 - (void)centralManager:(CBCentralManager *)central didDiscoverPeripheral:(CBPeripheral *)peripheral advertisementData:(NSDictionary *)advertisementData RSSI:(NSNumber *)RSSI
 {
+    //if we found another phone advertising using bluetooth low energy, connect to that peripheral
     self.connectedTarget = peripheral;
     [self.manager connectPeripheral:self.connectedTarget options:nil];
 }
 
 - (void)centralManager:(CBCentralManager *)central didConnectPeripheral:(CBPeripheral *)peripheral
 {
+    //if we are successful in connecting to the peripheral, stop scanning for other peripherals, and see if we can find the service with the unique identifier of the target
     _connected = YES;
     
     [self.manager stopScan];
@@ -94,6 +95,7 @@
 
 - (void)centralManager:(CBCentralManager *)central didDisconnectPeripheral:(CBPeripheral *)peripheral error:(NSError *)error
 {
+    //if we are disconnected from the peripheral, reconnect
     id tempDelegate = self.delegate;
     if ([tempDelegate respondsToSelector:@selector(didReceiveNewRSSI:)])
         [self.delegate didReceiveNewRSSI:-100];
@@ -109,8 +111,9 @@
         return;
     }
     
+    // once we find the service that we are looking for, look for its dummy characteristic
     for (CBService *service in peripheral.services) {
-        [peripheral discoverCharacteristics:@[[CBUUID UUIDWithString:CHARACTERISTIC_UUID]] forService:service];
+        [peripheral discoverCharacteristics:@[[CBUUID UUIDWithString:@"00000000-0000-0000-0000-000000000000"]] forService:service];
     }
 }
 
@@ -122,7 +125,7 @@
     
     for (CBCharacteristic *characteristic in service.characteristics) {
         
-        if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:CHARACTERISTIC_UUID]]) {
+        if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:@"00000000-0000-0000-0000-000000000000"]]) {
             
             id tempDelegate = self.delegate;
             if ([tempDelegate respondsToSelector:@selector(didConnectToTarget)])
@@ -154,9 +157,6 @@
 
 - (void)peripheral:(CBPeripheral *)peripheral didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error
 {
-    //id tempDelegate = self.delegate;
-    //if ([tempDelegate respondsToSelector:@selector(didDetectInteraction)])
-        //[self.delegate didDetectInteraction];
 }
 
 - (void)startReceivingSignalStrenght

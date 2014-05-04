@@ -212,7 +212,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="done" destination="AGB-6c-KeP" id="uKb-jt-D4S"/>
-                        <outlet property="name" destination="H45-Gg-8G1" id="AqE-rj-zLF"/>
+                        <outlet property="email" destination="H45-Gg-8G1" id="n7a-pb-H1Y"/>
                         <outlet property="password" destination="MST-QG-IVN" id="2vs-mY-bh0"/>
                         <segue destination="vXZ-lx-hvc" kind="push" identifier="LoginDone" id="I1V-iZ-Q3y"/>
                     </connections>

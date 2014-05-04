@@ -14,10 +14,7 @@
 @optional
 - (void)didFindTarget;
 - (void)didConnectToTarget;
-//- (void)didDetectInteraction;
 - (void)didReceiveNewRSSI:(int)RSSI;
-
-//- (void)didConnectToListener;
 @end
 
 @interface BLECentralController : NSObject <CBCentralManagerDelegate, CBPeripheralDelegate>

@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6BC5B9DC190CDECC00E01566 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BC5B9DB190CDECC00E01566 /* FacebookSDK.framework */; };
+		6BA448EA19167BA40037EE0E /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BA448E919167BA40037EE0E /* FacebookSDK.framework */; };
+		6BA448EC19167BC00037EE0E /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BA448EB19167BC00037EE0E /* Parse.framework */; };
 		6BC5B9DE190DB7D400E01566 /* libz.1.1.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BC5B9DD190DB7D400E01566 /* libz.1.1.3.dylib */; };
 		6BC5B9F0190E016A00E01566 /* AppIcon29x29.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BC5B9E0190E016A00E01566 /* AppIcon29x29.png */; };
 		6BC5B9F1190E016A00E01566 /* AppIcon29x29@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BC5B9E1190E016A00E01566 /* AppIcon29x29@2x.png */; };
@@ -28,8 +29,6 @@
 		6BC5BA12190E0D4800E01566 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 6BC5BA0C190E0D4800E01566 /* README.md */; };
 		6BC5BA13190E0D4800E01566 /* release_notes.md in Resources */ = {isa = PBXBuildFile; fileRef = 6BC5BA0D190E0D4800E01566 /* release_notes.md */; };
 		6BC5BA16190E0DA900E01566 /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BC5BA0B190E0D4800E01566 /* libTestFlight.a */; };
-		6BC5BA1A190E303800E01566 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BC5BA19190E303800E01566 /* Reachability.m */; };
-		6BC5BA1E190E303F00E01566 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BC5BA1D190E303F00E01566 /* MBProgressHUD.m */; };
 		6BCA48FA1904B37500977B33 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BCA48F91904B37500977B33 /* Foundation.framework */; };
 		6BCA48FC1904B37500977B33 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BCA48FB1904B37500977B33 /* CoreGraphics.framework */; };
 		6BCA48FE1904B37500977B33 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BCA48FD1904B37500977B33 /* UIKit.framework */; };
@@ -47,7 +46,6 @@
 		6BCA497F1904E99A00977B33 /* Welcome.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCA497E1904E99A00977B33 /* Welcome.m */; };
 		6BCA49821904E9D500977B33 /* Login.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCA49811904E9D500977B33 /* Login.m */; };
 		6BCA49851904E9F100977B33 /* Register.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCA49841904E9F100977B33 /* Register.m */; };
-		6BCA49CF1905812F00977B33 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BCA49CE1905812F00977B33 /* Parse.framework */; };
 		6BCA49D11905A4CC00977B33 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BCA49D01905A4CC00977B33 /* AudioToolbox.framework */; };
 		6BCA49D31905A4D500977B33 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BCA49D21905A4D500977B33 /* CFNetwork.framework */; };
 		6BCA49D51905A4EA00977B33 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BCA49D41905A4EA00977B33 /* CoreLocation.framework */; };
@@ -71,7 +69,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		6BC5B9DB190CDECC00E01566 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
+		6BA448E919167BA40037EE0E /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
+		6BA448EB19167BC00037EE0E /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		6BC5B9DD190DB7D400E01566 /* libz.1.1.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.1.3.dylib; path = usr/lib/libz.1.1.3.dylib; sourceTree = SDKROOT; };
 		6BC5B9E0190E016A00E01566 /* AppIcon29x29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppIcon29x29.png; sourceTree = "<group>"; };
 		6BC5B9E1190E016A00E01566 /* AppIcon29x29@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon29x29@2x.png"; sourceTree = "<group>"; };
@@ -95,10 +94,6 @@
 		6BC5BA0E190E0D4800E01566 /* TestFlight+AsyncLogging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TestFlight+AsyncLogging.h"; sourceTree = "<group>"; };
 		6BC5BA0F190E0D4800E01566 /* TestFlight+ManualSessions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TestFlight+ManualSessions.h"; sourceTree = "<group>"; };
 		6BC5BA10190E0D4800E01566 /* TestFlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestFlight.h; sourceTree = "<group>"; };
-		6BC5BA18190E303800E01566 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
-		6BC5BA19190E303800E01566 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
-		6BC5BA1C190E303F00E01566 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
-		6BC5BA1D190E303F00E01566 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		6BCA48F61904B37500977B33 /* Assassination.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Assassination.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BCA48F91904B37500977B33 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6BCA48FB1904B37500977B33 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -124,7 +119,6 @@
 		6BCA49811904E9D500977B33 /* Login.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Login.m; sourceTree = "<group>"; };
 		6BCA49831904E9F100977B33 /* Register.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Register.h; sourceTree = "<group>"; };
 		6BCA49841904E9F100977B33 /* Register.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Register.m; sourceTree = "<group>"; };
-		6BCA49CE1905812F00977B33 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = ../Parse.framework; sourceTree = "<group>"; };
 		6BCA49D01905A4CC00977B33 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		6BCA49D21905A4D500977B33 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		6BCA49D41905A4EA00977B33 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -136,7 +130,6 @@
 		6BCA49E01905A53400977B33 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		6BCA49E21908618900977B33 /* BLECentralController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLECentralController.h; sourceTree = "<group>"; };
 		6BCA49E31908618900977B33 /* BLECentralController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLECentralController.m; sourceTree = "<group>"; };
-		6BCA49E51908700F00977B33 /* BluetoothServices.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BluetoothServices.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,16 +143,16 @@
 				6BCA49D91905A50600977B33 /* MobileCoreServices.framework in Frameworks */,
 				6BC5B9DE190DB7D400E01566 /* libz.1.1.3.dylib in Frameworks */,
 				6BCA49D31905A4D500977B33 /* CFNetwork.framework in Frameworks */,
+				6BA448EC19167BC00037EE0E /* Parse.framework in Frameworks */,
 				6BCA49D11905A4CC00977B33 /* AudioToolbox.framework in Frameworks */,
 				6BCA49DF1905A52100977B33 /* StoreKit.framework in Frameworks */,
+				6BA448EA19167BA40037EE0E /* FacebookSDK.framework in Frameworks */,
 				6BCA49D71905A4FD00977B33 /* libz.dylib in Frameworks */,
 				6BC5BA16190E0DA900E01566 /* libTestFlight.a in Frameworks */,
 				6BCA49D51905A4EA00977B33 /* CoreLocation.framework in Frameworks */,
 				6BCA48FC1904B37500977B33 /* CoreGraphics.framework in Frameworks */,
 				6BCA48FE1904B37500977B33 /* UIKit.framework in Frameworks */,
-				6BCA49CF1905812F00977B33 /* Parse.framework in Frameworks */,
 				6BCA48FA1904B37500977B33 /* Foundation.framework in Frameworks */,
-				6BC5B9DC190CDECC00E01566 /* FacebookSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -212,24 +205,6 @@
 			path = TestFlightSDK3.0.0;
 			sourceTree = "<group>";
 		};
-		6BC5BA17190E303800E01566 /* Reachability */ = {
-			isa = PBXGroup;
-			children = (
-				6BC5BA18190E303800E01566 /* Reachability.h */,
-				6BC5BA19190E303800E01566 /* Reachability.m */,
-			);
-			path = Reachability;
-			sourceTree = "<group>";
-		};
-		6BC5BA1B190E303F00E01566 /* MBProgressHUD */ = {
-			isa = PBXGroup;
-			children = (
-				6BC5BA1C190E303F00E01566 /* MBProgressHUD.h */,
-				6BC5BA1D190E303F00E01566 /* MBProgressHUD.m */,
-			);
-			path = MBProgressHUD;
-			sourceTree = "<group>";
-		};
 		6BCA48ED1904B37400977B33 = {
 			isa = PBXGroup;
 			children = (
@@ -253,7 +228,7 @@
 			isa = PBXGroup;
 			children = (
 				6BC5B9DD190DB7D400E01566 /* libz.1.1.3.dylib */,
-				6BC5B9DB190CDECC00E01566 /* FacebookSDK.framework */,
+				6BA448E919167BA40037EE0E /* FacebookSDK.framework */,
 				6BCA49E01905A53400977B33 /* SystemConfiguration.framework */,
 				6BCA49DE1905A52100977B33 /* StoreKit.framework */,
 				6BCA49DC1905A51800977B33 /* Security.framework */,
@@ -263,7 +238,7 @@
 				6BCA49D41905A4EA00977B33 /* CoreLocation.framework */,
 				6BCA49D21905A4D500977B33 /* CFNetwork.framework */,
 				6BCA49D01905A4CC00977B33 /* AudioToolbox.framework */,
-				6BCA49CE1905812F00977B33 /* Parse.framework */,
+				6BA448EB19167BC00037EE0E /* Parse.framework */,
 				6BCA48F91904B37500977B33 /* Foundation.framework */,
 				6BCA48FB1904B37500977B33 /* CoreGraphics.framework */,
 				6BCA48FD1904B37500977B33 /* UIKit.framework */,
@@ -277,7 +252,6 @@
 			children = (
 				6BCA49081904B37500977B33 /* AppDelegate.h */,
 				6BCA49091904B37500977B33 /* AppDelegate.m */,
-				6BCA49E51908700F00977B33 /* BluetoothServices.h */,
 				6BCA49E21908618900977B33 /* BLECentralController.h */,
 				6BCA49E31908618900977B33 /* BLECentralController.m */,
 				6BCA490B1904B37500977B33 /* Main.storyboard */,
@@ -302,8 +276,6 @@
 				6BCA49021904B37500977B33 /* InfoPlist.strings */,
 				6BCA49051904B37500977B33 /* main.m */,
 				6BCA49071904B37500977B33 /* Assassination-Prefix.pch */,
-				6BC5BA1B190E303F00E01566 /* MBProgressHUD */,
-				6BC5BA17190E303800E01566 /* Reachability */,
 				6BC5BA0A190E0D4800E01566 /* TestFlightSDK3.0.0 */,
 				6BC5B9DF190E016A00E01566 /* App Icon [Squared] */,
 			);
@@ -448,9 +420,7 @@
 			files = (
 				6BCA49821904E9D500977B33 /* Login.m in Sources */,
 				6BCA497F1904E99A00977B33 /* Welcome.m in Sources */,
-				6BC5BA1A190E303800E01566 /* Reachability.m in Sources */,
 				6BCA49851904E9F100977B33 /* Register.m in Sources */,
-				6BC5BA1E190E303F00E01566 /* MBProgressHUD.m in Sources */,
 				6BCA49101904B37500977B33 /* ViewController.m in Sources */,
 				6BCA490A1904B37500977B33 /* AppDelegate.m in Sources */,
 				6BCA49E41908618900977B33 /* BLECentralController.m in Sources */,
@@ -589,6 +559,7 @@
 					/Users/hsenju/Downloads,
 					/Users/hsenju/Documents,
 					/Users/hsenju/Documents/FacebookSDK,
+					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Assassination/Assassination-Prefix.pch";
@@ -617,6 +588,7 @@
 					/Users/hsenju/Downloads,
 					/Users/hsenju/Documents,
 					/Users/hsenju/Documents/FacebookSDK,
+					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Assassination/Assassination-Prefix.pch";

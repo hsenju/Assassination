@@ -8,14 +8,13 @@
 
 #import "Login.h"
 #import "ViewController.h"
-#import "MBProgressHUD.h"
+
 #import <Parse/Parse.h>
 
 @interface Login ()
 
-@property (nonatomic, strong) MBProgressHUD *hud;
 
-- (void)processFieldEntries;
+- (void)loginUser;
 - (void)textInputChanged:(NSNotification *)note;
 - (BOOL)shouldEnableDoneButton;
 
@@ -25,6 +24,7 @@
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
+    //iniitalize storyboard
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
     }
@@ -34,12 +34,18 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textInputChanged:) name:UITextFieldTextDidChangeNotification object:self.name];
+    
+    //create trigger events if the text inputs to these prompts are changed
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textInputChanged:) name:UITextFieldTextDidChangeNotification object:self.email];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textInputChanged:) name:UITextFieldTextDidChangeNotification object:self.password];
+    
+    //initiliaze the textfields with prompts
 	self.done.enabled = NO;
-    self.name.placeholder = @"Email";
+    self.email.placeholder = @"Email";
     self.password.placeholder = @"Password";
     self.password.secureTextEntry = YES;
+    
+    //make the view pretty
     self.navigationController.navigationBarHidden = NO;
     [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
     self.navigationController.navigationBar.shadowImage = [UIImage new];
@@ -49,25 +55,29 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-	[self.name becomeFirstResponder];
+    //star the view by prompting the user to fill out their email
+	[self.email becomeFirstResponder];
 	[super viewWillAppear:animated];
 }
 
 -  (void)dealloc {
-	[[NSNotificationCenter defaultCenter] removeObserver:self name:UITextFieldTextDidChangeNotification object:self.name];
+    //remove these triggers when cleaning up
+	[[NSNotificationCenter defaultCenter] removeObserver:self name:UITextFieldTextDidChangeNotification object:self.email];
 	[[NSNotificationCenter defaultCenter] removeObserver:self name:UITextFieldTextDidChangeNotification object:self.password];
 }
 
 - (IBAction)done:(id)sender {
-	[self.name resignFirstResponder];
+    //when the user clicks the done button, resign the keyboard, and start logging the user in
+	[self.email resignFirstResponder];
 	[self.password resignFirstResponder];
-	[self processFieldEntries];
+	[self loginUser];
 }
 
 - (BOOL)shouldEnableDoneButton {
+    //check if the done button should be enabled
 	BOOL enableDoneButton = NO;
-	if (self.name.text != nil &&
-		self.name.text.length > 0 &&
+	if (self.email.text != nil &&
+		self.email.text.length > 0 &&
 		self.password.text != nil &&
 		self.password.text.length > 0) {
 		enableDoneButton = YES;
@@ -76,69 +86,36 @@
 }
 
 - (void)textInputChanged:(NSNotification *)note {
+    //check if the done button should be enabled
 	self.done.enabled = [self shouldEnableDoneButton];
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
-	if (textField == self.name) {
+    //if one of the fields is completed, direct user to next field
+	if (textField == self.email) {
 		[self.password becomeFirstResponder];
 	}
 	if (textField == self.password) {
 		[self.password resignFirstResponder];
-		[self processFieldEntries];
+		[self loginUser];
 	}
 	return YES;
 }
 
-- (void)processFieldEntries {
-    self.hud = [MBProgressHUD showHUDAddedTo:self.view.superview animated:YES];
-    self.hud.labelText = NSLocalizedString(@"Logging in", nil);
-    self.hud.dimBackground = YES;
-	NSString *username = self.name.text;
+- (void)loginUser {
+    //get the inputs
+	NSString *email = self.email.text;
 	NSString *password = self.password.text;
-	NSString *noUsernameText = @"username";
-	NSString *noPasswordText = @"password";
-	NSString *errorText = @"No ";
-	NSString *errorTextJoin = @" or ";
-	NSString *errorTextEnding = @" entered";
-	BOOL textError = NO;
-	if (username.length == 0 || password.length == 0) {
-		textError = YES;
-		if (password.length == 0) {
-			[self.password becomeFirstResponder];
-		}
-		if (username.length == 0) {
-			[self.name becomeFirstResponder];
-		}
-	}
-	if (username.length == 0) {
-		textError = YES;
-		errorText = [errorText stringByAppendingString:noUsernameText];
-	}
-	if (password.length == 0) {
-		textError = YES;
-		if (username.length == 0) {
-			errorText = [errorText stringByAppendingString:errorTextJoin];
-		}
-		errorText = [errorText stringByAppendingString:noPasswordText];
-	}
-	if (textError) {
-		errorText = [errorText stringByAppendingString:errorTextEnding];
-		UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:errorText message:nil delegate:self cancelButtonTitle:nil otherButtonTitles:@"Ok", nil];
-		[alertView show];
-		return;
-	}
-	self.done.enabled = NO;    UIActivityIndicatorView *activityView=[[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
-    activityView.center=self.view.center;
-    [activityView startAnimating];
-    [self.view addSubview:activityView];
-	[PFUser logInWithUsernameInBackground:username password:password block:^(PFUser *user, NSError *error) {
-		[activityView stopAnimating];
-        [MBProgressHUD hideHUDForView:self.view.superview animated:NO];
+	
+    self.done.enabled = NO;
+
+    //Log user in
+	[PFUser logInWithUsernameInBackground:email password:password block:^(PFUser *user, NSError *error) {
 		if (user) {
+            //if successful, take the user to the main view
             [self performSegueWithIdentifier: @"LoginDone" sender: self];
 		} else {
-			NSLog(@"%s didn't get a user!", __PRETTY_FUNCTION__);
+            //if failure, show error messages and take the user back
 			self.done.enabled = [self shouldEnableDoneButton];
 			UIAlertView *alertView = nil;
             if (error == nil) {
@@ -147,7 +124,7 @@
 				alertView = [[UIAlertView alloc] initWithTitle:[[error userInfo] objectForKey:@"error"] message:nil delegate:self cancelButtonTitle:nil otherButtonTitles:@"Ok", nil];
 			}
 			[alertView show];
-			[self.name becomeFirstResponder];
+			[self.email becomeFirstResponder];
 		}
 	}];
 }
@@ -155,6 +132,7 @@
 
 - (void)didReceiveMemoryWarning
 {
-    [super didReceiveMemoryWarning];}
+    [super didReceiveMemoryWarning];
+}
 
 @end

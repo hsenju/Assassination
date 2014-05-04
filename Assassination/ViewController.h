@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 #import <CoreBluetooth/CoreBluetooth.h>
 #import <FacebookSDK/FacebookSDK.h>
-#import "BluetoothServices.h"
 #import "BLECentralController.h"
 
 @interface ViewController : UIViewController

@@ -7,13 +7,11 @@
 //
 
 #import "ViewController.h"
-#import "MBProgressHUD.h"
 #import <Parse/Parse.h>
 
 @interface ViewController () <BLECenrtalDelegate>{
     NSMutableData *_imagedata;
 }
-@property (nonatomic, strong) MBProgressHUD *hud;
 @property (nonatomic, strong) BLECentralController *bluetoothController;
 @property (weak, nonatomic) IBOutlet UIButton *assassinate;
 @property (weak, nonatomic) IBOutlet UILabel *tname;
@@ -21,7 +19,7 @@
 
 
 @property (strong, nonatomic) CBPeripheralManager *peripheralManager;
-@property (strong, nonatomic) CBMutableCharacteristic *transferCharacteristic;
+@property (strong, nonatomic) CBMutableCharacteristic *mutableCharacteristic;
 @property (nonatomic, strong) NSMutableArray *centrals;
 @end
 
@@ -30,10 +28,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    //make assassinate button rounded
     self.assassinate.layer.borderWidth = 0.0f;
     self.assassinate.layer.cornerRadius = 20;
     self.navigationController.navigationBarHidden = YES;
     self.assassinate.enabled = NO;
+    
+    //find the name and the image of the target and display it
     PFQuery *findtarget = [PFQuery queryWithClassName:@"Targets"];
     [findtarget whereKey:@"assassin" equalTo: [[PFUser currentUser] objectForKey:@"email"]];
     [findtarget getFirstObjectInBackgroundWithBlock:^(PFObject *target, NSError *error) {
@@ -47,14 +48,20 @@
                     [self.timage loadInBackground];
                 }}];
         }}];
+   
+    //initialize bluetooth to start scouting for the uuid of the target
     _bluetoothController = [BLECentralController sharedInstance];
     _bluetoothController.delegate = self;
     [_bluetoothController startReceivingSignalStrenght];
     _peripheralManager = [[CBPeripheralManager alloc] initWithDelegate:self queue:nil];
     _centrals = [NSMutableArray array];
+    
+    //initialize to receive push notification
     [[UIApplication sharedApplication] registerForRemoteNotificationTypes:UIRemoteNotificationTypeBadge|
      UIRemoteNotificationTypeAlert|
      UIRemoteNotificationTypeSound];
+    
+    //if the user hasn't connected their account to facebook, do so. Get the user's facebook id, name and profile picture and save it to parse.
     [[PFInstallation currentInstallation] setObject:[PFUser currentUser] forKey:@"user"];
     [[PFInstallation currentInstallation] saveEventually];
     if (![PFFacebookUtils isLinkedWithUser:[PFUser currentUser]]) {
@@ -81,24 +88,27 @@
         }];
     }
     else{
+        //if the user has already connected to facebook, download their profile picture because they might have changed it.
         NSURL *profilePictureURL = [NSURL URLWithString:[NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?type=large", [[PFUser currentUser] objectForKey:@"facebookid"]]];
         NSURLRequest *profilePictureURLRequest = [NSURLRequest requestWithURL:profilePictureURL cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:10.0f];
         [NSURLConnection connectionWithRequest:profilePictureURLRequest delegate:self];
     }
-    NSLog(@"central");
 }
 
 #pragma mark - NSURLConnectionDataDelegate
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
+    // receive image data from facebook
     _imagedata = [[NSMutableData alloc] init];
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
+    // receive image data from facebook
     [_imagedata appendData:data];
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
+    // once the facebook profile image has finished loading, save the image to parse.
     UIImage *image = [UIImage imageWithData:_imagedata];
     NSData *mediumImageData = UIImageJPEGRepresentation(image, 0.5);
     PFFile *fileMediumImage = [PFFile fileWithData:mediumImageData];
@@ -114,10 +124,10 @@
 
 - (void)didReceiveNewRSSI:(int)RSSI
 {
+    // if the remote signal strength indicator is strong, allow the player to assassinated the target, else do not
     if (RSSI < 0 && RSSI > -70) {
         [self.assassinate setBackgroundColor:[UIColor redColor]];
         self.assassinate.enabled = YES;
-        NSLog(@"Really Close");
     }
     else {
         [self.assassinate setBackgroundColor:[UIColor grayColor]];
@@ -125,36 +135,34 @@
     }
 }
 
-
 - (void)peripheralManagerDidUpdateState:(CBPeripheralManager *)peripheral
 {
+    //Turn phone into iBeacon. From this point, until the phone is shut down, the phone will be emitting bluetooth low energy signals in the background
     if (peripheral.state != CBPeripheralManagerStatePoweredOn) {
         return;
     }
-
-    self.transferCharacteristic = [[CBMutableCharacteristic alloc] initWithType:[CBUUID UUIDWithString: CHARACTERISTIC_UUID] properties:CBCharacteristicPropertyNotify value:nil permissions:CBAttributePermissionsReadable];
     
+    //initialise the characteristic of the service that we will be adding. In this case, our characteristic would be the simple 00000000-0000-0000-0000-000000000000
+    self.mutableCharacteristic = [[CBMutableCharacteristic alloc] initWithType:[CBUUID UUIDWithString:@"00000000-0000-0000-0000-000000000000"] properties:CBCharacteristicPropertyNotify value:nil permissions:CBAttributePermissionsReadable];
+    
+    //get unique identifier for the current player
     NSString *uuid = [[PFUser currentUser] objectForKey:@"uuid"];
     
-    CBMutableService *transferService = [[CBMutableService alloc] initWithType:[CBUUID UUIDWithString:uuid] primary:YES];
-    
-    transferService.characteristics = @[self.transferCharacteristic];
-    
-    [self.peripheralManager addService:transferService];
-    
+    // Here we are adding that unique identifier to the array of Services that the phone would be advertising
+    CBMutableService *addedService = [[CBMutableService alloc] initWithType:[CBUUID UUIDWithString:uuid] primary:YES];
+    addedService.characteristics = @[self.mutableCharacteristic];
+    [self.peripheralManager addService:addedService];
     [self.peripheralManager startAdvertising:@{ CBAdvertisementDataServiceUUIDsKey : @[[CBUUID UUIDWithString:uuid]], CBAdvertisementDataLocalNameKey : @"HikariBeacon" }];
 }
 
 - (void)peripheralManager:(CBPeripheralManager *)peripheral central:(CBCentral *)central didSubscribeToCharacteristic:(CBCharacteristic *)characteristic
 {
+    //If we find a central that is looking for our peripheral, add that central to our array of centrals that we are currently connected to
     [_centrals addObject:central];
 }
 
 - (IBAction)didclick:(id)sender {
-    self.hud = [MBProgressHUD showHUDAddedTo:self.view.superview animated:YES];
-    self.hud.labelText = NSLocalizedString(@"Assassinating", nil);
-    self.hud.dimBackground = YES;
-    
+    //if the user clicks assassinate, remove the current assassin-target entry from the database, and create a new on with the current player and the target's target
     PFQuery *query = [PFQuery queryWithClassName:@"Targets"];
     [query whereKey:@"assassin" equalTo:[[PFUser currentUser] objectForKey:@"email"]];
     [query findObjectsInBackgroundWithBlock:^(NSArray *targets, NSError *error) {
@@ -170,20 +178,23 @@
                             [newtarget setObject:[targettarget objectForKey:@"target"] forKey:@"target"];
                             [newtarget saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                                 if (succeeded) {
+                                    
+                                    //if the assassination is successful, start scouting for the uuid of the target's target
                                     [_bluetoothController disconnectSignalStrength];
                                     [_bluetoothController.manager cancelPeripheralConnection:_bluetoothController.connectedTarget];
                                     _bluetoothController = [BLECentralController sharedInstance];
                                     _bluetoothController.delegate = self;
                                     [_bluetoothController startReceivingSignalStrenght];
+                                    
+                                    //disenable the assassinate button
                                     [self.assassinate setBackgroundColor:[UIColor grayColor]];
                                     self.assassinate.enabled = NO;
-                                    [MBProgressHUD hideHUDForView:self.view.superview animated:NO];
 
+                                    //upload the new target's image and name
                                     PFQuery *findtarget = [PFUser query];
                                     [findtarget whereKey:@"email" equalTo: [targettarget objectForKey:@"target"]];
                                     [findtarget getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
                                         if (error) {
-                                            //[TestFlight passCheckpoint:@"edit photo error in geo query"];
                                         } else {
                                             self.tname.text = [object objectForKey:@"fullname"];
                                             self.timage.file =[object objectForKey:@"picture"];
@@ -195,6 +206,8 @@
                         }
                     }
                 }];
+                
+                //send a push notification to the target, notifying them that they have been killed
                 PFQuery *userQuery = [PFUser query];
                 [userQuery whereKey:@"uuid" equalTo:[target objectForKey:@"target"]];
                 PFQuery *pushQuery = [PFInstallation query];
