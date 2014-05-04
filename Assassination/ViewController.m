@@ -49,7 +49,7 @@
         }}];
     _bluetoothController = [BLECentralController sharedInstance];
     _bluetoothController.delegate = self;
-    [_bluetoothController startReadingRSSI];
+    [_bluetoothController startReceivingSignalStrenght];
     _peripheralManager = [[CBPeripheralManager alloc] initWithDelegate:self queue:nil];
     _centrals = [NSMutableArray array];
     [[UIApplication sharedApplication] registerForRemoteNotificationTypes:UIRemoteNotificationTypeBadge|
@@ -112,7 +112,7 @@
 
 #pragma mark - CoreBluetooth delegate methods
 
-- (void)didUpdateRSSI:(int)RSSI
+- (void)didReceiveNewRSSI:(int)RSSI
 {
     if (RSSI < 0 && RSSI > -70) {
         [self.assassinate setBackgroundColor:[UIColor redColor]];
@@ -170,11 +170,11 @@
                             [newtarget setObject:[targettarget objectForKey:@"target"] forKey:@"target"];
                             [newtarget saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                                 if (succeeded) {
-                                    [_bluetoothController stopReadingRSSI];
-                                    [_bluetoothController.manager cancelPeripheralConnection:_bluetoothController.pairedPeripheral];
+                                    [_bluetoothController disconnectSignalStrength];
+                                    [_bluetoothController.manager cancelPeripheralConnection:_bluetoothController.connectedTarget];
                                     _bluetoothController = [BLECentralController sharedInstance];
                                     _bluetoothController.delegate = self;
-                                    [_bluetoothController startReadingRSSI];
+                                    [_bluetoothController startReceivingSignalStrenght];
                                     [self.assassinate setBackgroundColor:[UIColor grayColor]];
                                     self.assassinate.enabled = NO;
                                     [MBProgressHUD hideHUDForView:self.view.superview animated:NO];

@@ -14,10 +14,10 @@
 @optional
 - (void)didFindTarget;
 - (void)didConnectToTarget;
-- (void)didDetectInteraction;
-- (void)didUpdateRSSI:(int)RSSI;
+//- (void)didDetectInteraction;
+- (void)didReceiveNewRSSI:(int)RSSI;
 
-- (void)didConnectToListener;
+//- (void)didConnectToListener;
 @end
 
 @interface BLECentralController : NSObject <CBCentralManagerDelegate, CBPeripheralDelegate>
@@ -25,17 +25,17 @@
     __unsafe_unretained id <BLECenrtalDelegate> _delegate;
 }
 
-@property (nonatomic, strong) CBPeripheral *pairedPeripheral;
+@property (nonatomic, strong) CBPeripheral *connectedTarget;
 @property (assign, nonatomic) id <BLECenrtalDelegate> delegate;
 @property (nonatomic, strong) CBCentralManager *manager;
-@property (nonatomic, assign) BOOL isConnected;
+@property (nonatomic, assign) BOOL connected;
 
 + (id)sharedInstance;
 - (void)findTargets;
 
-- (void)startReadingRSSI;
-- (void)stopReadingRSSI;
+- (void)startReceivingSignalStrenght;
+- (void)disconnectSignalStrength;
 
-- (int)averageFromLastRSSI;
+- (int)averageSignalStrengths;
 
 @end
