@@ -57,7 +57,7 @@
 		6BCA49DD1905A51800977B33 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BCA49DC1905A51800977B33 /* Security.framework */; };
 		6BCA49DF1905A52100977B33 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BCA49DE1905A52100977B33 /* StoreKit.framework */; };
 		6BCA49E11905A53400977B33 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BCA49E01905A53400977B33 /* SystemConfiguration.framework */; };
-		6BCA49E41908618900977B33 /* CoreBluetoothController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCA49E31908618900977B33 /* CoreBluetoothController.m */; };
+		6BCA49E41908618900977B33 /* BLECentralController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCA49E31908618900977B33 /* BLECentralController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -134,8 +134,8 @@
 		6BCA49DC1905A51800977B33 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		6BCA49DE1905A52100977B33 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		6BCA49E01905A53400977B33 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		6BCA49E21908618900977B33 /* CoreBluetoothController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreBluetoothController.h; sourceTree = "<group>"; };
-		6BCA49E31908618900977B33 /* CoreBluetoothController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreBluetoothController.m; sourceTree = "<group>"; };
+		6BCA49E21908618900977B33 /* BLECentralController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLECentralController.h; sourceTree = "<group>"; };
+		6BCA49E31908618900977B33 /* BLECentralController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLECentralController.m; sourceTree = "<group>"; };
 		6BCA49E51908700F00977B33 /* BluetoothServices.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BluetoothServices.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -278,8 +278,8 @@
 				6BCA49081904B37500977B33 /* AppDelegate.h */,
 				6BCA49091904B37500977B33 /* AppDelegate.m */,
 				6BCA49E51908700F00977B33 /* BluetoothServices.h */,
-				6BCA49E21908618900977B33 /* CoreBluetoothController.h */,
-				6BCA49E31908618900977B33 /* CoreBluetoothController.m */,
+				6BCA49E21908618900977B33 /* BLECentralController.h */,
+				6BCA49E31908618900977B33 /* BLECentralController.m */,
 				6BCA490B1904B37500977B33 /* Main.storyboard */,
 				6BCA49831904E9F100977B33 /* Register.h */,
 				6BCA49841904E9F100977B33 /* Register.m */,
@@ -453,7 +453,7 @@
 				6BC5BA1E190E303F00E01566 /* MBProgressHUD.m in Sources */,
 				6BCA49101904B37500977B33 /* ViewController.m in Sources */,
 				6BCA490A1904B37500977B33 /* AppDelegate.m in Sources */,
-				6BCA49E41908618900977B33 /* CoreBluetoothController.m in Sources */,
+				6BCA49E41908618900977B33 /* BLECentralController.m in Sources */,
 				6BCA49061904B37500977B33 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

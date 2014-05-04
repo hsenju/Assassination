@@ -6,10 +6,10 @@
 //  Copyright (c) 2014 Hikari Senju. All rights reserved.
 //
 
-#import "CoreBluetoothController.h"
+#import "BLECentralController.h"
 #import "BluetoothServices.h"
 
-@interface CoreBluetoothController ()
+@interface BLECentralController ()
 
 @property (nonatomic, strong) NSTimer *readRSSITimer;
 @property (nonatomic, strong) NSMutableArray *rssiArray;
@@ -18,7 +18,7 @@
 
 @end
 
-@implementation CoreBluetoothController
+@implementation BLECentralController
 
 - (id)init {
 	self = [super init];
@@ -36,10 +36,9 @@
 
 + (id)sharedInstance
 {
-	static CoreBluetoothController *this = nil;
+	static BLECentralController *this = nil;
     
-	//if (!this)
-    this = [[CoreBluetoothController alloc] init];
+    this = [[BLECentralController alloc] init];
     
 	return this;
 }
@@ -58,19 +57,16 @@
                     if (error) {
                     } else {
                         self.targetuuid = [objectb objectForKey:@"uuid"];
-                        [self findPeripherals];
+                        [self findTargets];
                     }}];
             }}];
     }
 }
 
-- (void)findPeripherals;
+- (void)findTargets;
 {
-    if (self.manager.state != CBCentralManagerStatePoweredOn)
-        NSLog (@"CoreBluetooth not initialized correctly!");
-    
-    else {
-        
+    if (self.manager.state == CBCentralManagerStatePoweredOn)
+    {
         NSArray *uuidArray = [NSArray arrayWithObjects:[CBUUID UUIDWithString:self.targetuuid], nil];
         NSDictionary *options = [NSDictionary dictionaryWithObject: [NSNumber numberWithBool:NO] forKey:CBCentralManagerScanOptionAllowDuplicatesKey];
         
@@ -136,8 +132,8 @@
         if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:CHARACTERISTIC_UUID]]) {
             
             id tempDelegate = self.delegate;
-            if ([tempDelegate respondsToSelector:@selector(didConnectToBeacon)])    
-                [self.delegate didConnectToBeacon];
+            if ([tempDelegate respondsToSelector:@selector(didConnectToTarget)])
+                [self.delegate didConnectToTarget];
             
             [self.pairedPeripheral setNotifyValue:YES forCharacteristic:characteristic];
         }

@@ -10,28 +10,28 @@
 #import <CoreBluetooth/CoreBluetooth.h>
 #import <Parse/Parse.h>
 
-@protocol CoreBluetoothDelegate
+@protocol BLECenrtalDelegate
 @optional
-- (void)didFindBeacon;
-- (void)didConnectToBeacon;
+- (void)didFindTarget;
+- (void)didConnectToTarget;
 - (void)didDetectInteraction;
 - (void)didUpdateRSSI:(int)RSSI;
 
 - (void)didConnectToListener;
 @end
 
-@interface CoreBluetoothController : NSObject <CBCentralManagerDelegate, CBPeripheralDelegate>
+@interface BLECentralController : NSObject <CBCentralManagerDelegate, CBPeripheralDelegate>
 {
-    __unsafe_unretained id <CoreBluetoothDelegate> _delegate;
+    __unsafe_unretained id <BLECenrtalDelegate> _delegate;
 }
 
 @property (nonatomic, strong) CBPeripheral *pairedPeripheral;
-@property (assign, nonatomic) id <CoreBluetoothDelegate> delegate;
+@property (assign, nonatomic) id <BLECenrtalDelegate> delegate;
 @property (nonatomic, strong) CBCentralManager *manager;
 @property (nonatomic, assign) BOOL isConnected;
 
 + (id)sharedInstance;
-- (void)findPeripherals;
+- (void)findTargets;
 
 - (void)startReadingRSSI;
 - (void)stopReadingRSSI;

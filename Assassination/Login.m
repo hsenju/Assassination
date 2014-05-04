@@ -27,7 +27,6 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
     }
     return self;
 }
@@ -41,12 +40,10 @@
     self.name.placeholder = @"Email";
     self.password.placeholder = @"Password";
     self.password.secureTextEntry = YES;
-    
     self.navigationController.navigationBarHidden = NO;
     [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
     self.navigationController.navigationBar.shadowImage = [UIImage new];
     self.navigationController.navigationBar.translucent = YES;
-    
     UIWindow *window = [UIApplication sharedApplication].keyWindow;
     window.tintColor = [UIColor whiteColor];
 }
@@ -94,11 +91,9 @@
 }
 
 - (void)processFieldEntries {
-
     self.hud = [MBProgressHUD showHUDAddedTo:self.view.superview animated:YES];
     self.hud.labelText = NSLocalizedString(@"Logging in", nil);
     self.hud.dimBackground = YES;
-    
 	NSString *username = self.name.text;
 	NSString *password = self.password.text;
 	NSString *noUsernameText = @"username";
@@ -107,10 +102,8 @@
 	NSString *errorTextJoin = @" or ";
 	NSString *errorTextEnding = @" entered";
 	BOOL textError = NO;
-
 	if (username.length == 0 || password.length == 0) {
 		textError = YES;
-        
 		if (password.length == 0) {
 			[self.password becomeFirstResponder];
 		}
@@ -118,12 +111,10 @@
 			[self.name becomeFirstResponder];
 		}
 	}
-    
 	if (username.length == 0) {
 		textError = YES;
 		errorText = [errorText stringByAppendingString:noUsernameText];
 	}
-    
 	if (password.length == 0) {
 		textError = YES;
 		if (username.length == 0) {
@@ -131,45 +122,31 @@
 		}
 		errorText = [errorText stringByAppendingString:noPasswordText];
 	}
-    
 	if (textError) {
 		errorText = [errorText stringByAppendingString:errorTextEnding];
 		UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:errorText message:nil delegate:self cancelButtonTitle:nil otherButtonTitles:@"Ok", nil];
 		[alertView show];
 		return;
 	}
-    
-	self.done.enabled = NO;
-    
-    UIActivityIndicatorView *activityView=[[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+	self.done.enabled = NO;    UIActivityIndicatorView *activityView=[[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
     activityView.center=self.view.center;
     [activityView startAnimating];
     [self.view addSubview:activityView];
-
-    
 	[PFUser logInWithUsernameInBackground:username password:password block:^(PFUser *user, NSError *error) {
 		[activityView stopAnimating];
         [MBProgressHUD hideHUDForView:self.view.superview animated:NO];
 		if (user) {
             [self performSegueWithIdentifier: @"LoginDone" sender: self];
-            
 		} else {
-			// Didn't get a user.
 			NSLog(@"%s didn't get a user!", __PRETTY_FUNCTION__);
-            
-			// Re-enable the done button if we're tossing them back into the form.
 			self.done.enabled = [self shouldEnableDoneButton];
 			UIAlertView *alertView = nil;
-            
-			if (error == nil) {
-				// the username or password is probably wrong.
+            if (error == nil) {
 				alertView = [[UIAlertView alloc] initWithTitle:@"Couldn’t log in:\nThe username or password were wrong." message:nil delegate:self cancelButtonTitle:nil otherButtonTitles:@"Ok", nil];
 			} else {
-				// Something else went horribly wrong:
 				alertView = [[UIAlertView alloc] initWithTitle:[[error userInfo] objectForKey:@"error"] message:nil delegate:self cancelButtonTitle:nil otherButtonTitles:@"Ok", nil];
 			}
 			[alertView show];
-			// Bring the keyboard back up, because they'll probably need to change something.
 			[self.name becomeFirstResponder];
 		}
 	}];
@@ -178,19 +155,6 @@
 
 - (void)didReceiveMemoryWarning
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+    [super didReceiveMemoryWarning];}
 
 @end

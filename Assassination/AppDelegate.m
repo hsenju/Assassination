@@ -59,36 +59,6 @@
     [[PFInstallation currentInstallation] saveInBackground];
 }
 
-- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
-}
-
-- (void)applicationWillResignActive:(UIApplication *)application
-{
-}
-
-- (void)applicationDidEnterBackground:(UIApplication *)application
-{
-}
-
-- (void)applicationWillEnterForeground:(UIApplication *)application
-{
-}
-
-- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
-    [PFPush handlePush:userInfo];
-}
-
-- (void)applicationDidBecomeActive:(UIApplication *)application
-{
-    [[FBSession activeSession] handleDidBecomeActive];
-}
-
-- (void)applicationWillTerminate:(UIApplication *)application
-{
-}
-
-
-
 #pragma mark - CBPeripheral delegate methods
 
 - (void)peripheralManagerDidUpdateState:(CBPeripheralManager *)peripheral
@@ -119,6 +89,33 @@
     [_centrals addObject:central];
 }
 
+- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
+}
+
+- (void)applicationWillResignActive:(UIApplication *)application
+{
+}
+
+- (void)applicationDidEnterBackground:(UIApplication *)application
+{
+}
+
+- (void)applicationWillEnterForeground:(UIApplication *)application
+{
+}
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+    [PFPush handlePush:userInfo];
+}
+
+- (void)applicationDidBecomeActive:(UIApplication *)application
+{
+    [[FBSession activeSession] handleDidBecomeActive];
+}
+
+- (void)applicationWillTerminate:(UIApplication *)application
+{
+}
 
 
 @end
