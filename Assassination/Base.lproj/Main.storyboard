@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6154.17" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="SkI-tg-3qR">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="SkI-tg-3qR">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6153.11"/>
+        <deployment defaultVersion="1552" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -16,10 +17,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7ec-5I-QXf">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7ec-5I-QXf">
                                 <rect key="frame" x="45" y="358" width="230" height="74"/>
                                 <color key="backgroundColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 <rect key="contentStretch" x="1" y="1" width="1" height="1"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="74" id="Sqp-MV-27u"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="35"/>
                                 <state key="normal" title="Assassinate">
                                     <color key="titleColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -28,21 +32,64 @@
                                     <action selector="didclick:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="973-Xj-kbg"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VF1-eo-5Mj">
-                                <rect key="frame" x="24" y="296" width="273" height="45"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VF1-eo-5Mj">
+                                <rect key="frame" x="160" y="296" width="0.0" height="45"/>
                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="20"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uje-Y4-0BJ" customClass="PFImageView">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uje-Y4-0BJ" customClass="PFImageView">
                                 <rect key="frame" x="36" y="31" width="248" height="247"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="247" id="Qnm-Oy-MLV"/>
+                                </constraints>
                             </imageView>
+                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="37U-p9-YsQ">
+                                <rect key="frame" x="20" y="154" width="280" height="237"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Your target hasn't registered yet" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="229" translatesAutoresizingMaskIntoConstraints="NO" id="ZuH-wY-f77">
+                                        <rect key="frame" x="31" y="39" width="229" height="157"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="0.5" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="ZuH-wY-f77" firstAttribute="leading" secondItem="37U-p9-YsQ" secondAttribute="leading" constant="31" id="BWP-xj-Aw0"/>
+                                    <constraint firstAttribute="centerX" secondItem="ZuH-wY-f77" secondAttribute="centerX" id="VqS-Ae-AtT"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="self.layer.cornerRadius">
+                                        <integer key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="self.layer.masksToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <constraints>
+                            <constraint firstItem="VF1-eo-5Mj" firstAttribute="top" secondItem="uje-Y4-0BJ" secondAttribute="bottom" constant="18" id="94z-5T-0hn"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="7ec-5I-QXf" secondAttribute="bottom" constant="136" id="GTM-Ae-G24"/>
+                            <constraint firstItem="uje-Y4-0BJ" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="36" id="GxA-L5-quV"/>
+                            <constraint firstItem="37U-p9-YsQ" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="20" id="Iwx-cO-MtD"/>
+                            <constraint firstItem="uje-Y4-0BJ" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="-33" id="Jqb-CH-501"/>
+                            <constraint firstAttribute="centerX" secondItem="37U-p9-YsQ" secondAttribute="centerX" id="Pcg-eG-pT4"/>
+                            <constraint firstItem="7ec-5I-QXf" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="45" id="Tcv-ht-Kdx"/>
+                            <constraint firstItem="uje-Y4-0BJ" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="aBh-lF-Brm"/>
+                            <constraint firstItem="7ec-5I-QXf" firstAttribute="top" secondItem="VF1-eo-5Mj" secondAttribute="bottom" constant="17" id="ayk-Sy-VT1"/>
+                            <constraint firstItem="uje-Y4-0BJ" firstAttribute="centerX" secondItem="7ec-5I-QXf" secondAttribute="centerX" id="gn8-AM-A62"/>
+                            <constraint firstItem="uje-Y4-0BJ" firstAttribute="centerX" secondItem="VF1-eo-5Mj" secondAttribute="centerX" id="m9b-xk-Km6"/>
+                            <constraint firstItem="7ec-5I-QXf" firstAttribute="centerX" secondItem="VF1-eo-5Mj" secondAttribute="centerX" id="ylZ-T5-R4d"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="6R1-Ls-cBd"/>
                     <connections>
                         <outlet property="assassinate" destination="7ec-5I-QXf" id="f1H-kN-fqO"/>
+                        <outlet property="overlay" destination="37U-p9-YsQ" id="k1A-ST-uHg"/>
+                        <outlet property="overlayLabel" destination="ZuH-wY-f77" id="hvA-L8-4N8"/>
                         <outlet property="timage" destination="uje-Y4-0BJ" id="sfW-w2-U6D"/>
                         <outlet property="tname" destination="VF1-eo-5Mj" id="zRf-XT-AU5"/>
                     </connections>
@@ -101,12 +148,12 @@
                         <outlet property="email" destination="TJU-1G-W3Z" id="FUZ-bh-jgi"/>
                         <outlet property="password" destination="stU-BS-CrH" id="cwe-KE-3jS"/>
                         <outlet property="passwordconfirm" destination="LhQ-pU-qDM" id="IcC-rm-6Om"/>
-                        <segue destination="vXZ-lx-hvc" kind="push" identifier="RegisterDone" id="WzY-5Y-4AJ"/>
+                        <segue destination="kqT-VZ-HOI" kind="push" identifier="RegistrationToLogin" id="Q8H-R3-5YU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dzy-5m-4Iw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="827" y="-304"/>
+            <point key="canvasLocation" x="839" y="-348"/>
         </scene>
         <!--Welcome-->
         <scene sceneID="FnQ-Mt-5Ki">
@@ -121,7 +168,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1hB-yu-M9G">
-                                <rect key="frame" x="138" y="241" width="44" height="30"/>
+                                <rect key="frame" x="138" y="303" width="44" height="30"/>
                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="15"/>
                                 <state key="normal" title="Login">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -132,7 +179,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fNV-Bi-vkR">
-                                <rect key="frame" x="131" y="297" width="59" height="36"/>
+                                <rect key="frame" x="131" y="241" width="59" height="36"/>
                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="15"/>
                                 <state key="normal" title="Signup">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -234,6 +281,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="WzY-5Y-4AJ"/>
+        <segue reference="Q8H-R3-5YU"/>
     </inferredMetricsTieBreakers>
 </document>

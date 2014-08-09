@@ -34,6 +34,16 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-TestFlightSDK.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-UIImageEffects.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-UPPlatformSDK.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -47,42 +57,52 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>2ED159F12C3D4160AACBFBE8</key>
+		<key>21B209AAD7A04783A6B6F74D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>2F19B0D376BE40A9B2C2FFCD</key>
+		<key>58750E0B654749D09922CFB0</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>2F7E6758908A492A8181272B</key>
+		<key>6D9F35F22FD945188B293F0C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>57BFC1B08DCF42C1BEBEE6F2</key>
+		<key>99200F3C59A24C7488857DF4</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B204B65FD1FA43DC8442F32D</key>
+		<key>BB8EBC2B32F0481AB9D3C754</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D4425495986548E9A1F38346</key>
+		<key>DB3B86D6756548E8B2FC4433</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E0102C6C1B314201A7412C17</key>
+		<key>DC0A05EF21D54D0DB82742E8</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>F69915F329B145D38BDB67E4</key>
+		<key>EC9F064BD2B349C8A47E94C7</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F4664E734BAD4F4AAD7B2FAE</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FC910D89C54149ACB421F995</key>
 		<dict>
 			<key>primary</key>
 			<true/>

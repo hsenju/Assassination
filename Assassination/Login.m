@@ -8,16 +8,15 @@
 
 #import "Login.h"
 #import "ViewController.h"
-
 #import <Parse/Parse.h>
+#import "MBProgressHUD.h"
 
 @interface Login ()
-
-
 - (void)loginUser;
 - (void)textInputChanged:(NSNotification *)note;
 - (BOOL)shouldEnableDoneButton;
 
+@property (nonatomic, strong) MBProgressHUD *hud;
 @end
 
 @implementation Login
@@ -52,6 +51,8 @@
     self.navigationController.navigationBar.translucent = YES;
     UIWindow *window = [UIApplication sharedApplication].keyWindow;
     window.tintColor = [UIColor whiteColor];
+    
+    [[UITextField appearance] setTintColor:[UIColor blackColor]];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -103,30 +104,46 @@
 }
 
 - (void)loginUser {
+    self.hud = [MBProgressHUD showHUDAddedTo:self.view.superview animated:YES];
+    self.hud.labelText = NSLocalizedString(@"Loading", nil);
+    self.hud.dimBackground = YES;
     //get the inputs
 	NSString *email = self.email.text;
 	NSString *password = self.password.text;
 	
     self.done.enabled = NO;
-
-    //Log user in
-	[PFUser logInWithUsernameInBackground:email password:password block:^(PFUser *user, NSError *error) {
-		if (user) {
-            //if successful, take the user to the main view
-            [self performSegueWithIdentifier: @"LoginDone" sender: self];
-		} else {
-            //if failure, show error messages and take the user back
-			self.done.enabled = [self shouldEnableDoneButton];
-			UIAlertView *alertView = nil;
-            if (error == nil) {
-				alertView = [[UIAlertView alloc] initWithTitle:@"Couldn’t log in:\nThe username or password were wrong." message:nil delegate:self cancelButtonTitle:nil otherButtonTitles:@"Ok", nil];
-			} else {
-				alertView = [[UIAlertView alloc] initWithTitle:[[error userInfo] objectForKey:@"error"] message:nil delegate:self cancelButtonTitle:nil otherButtonTitles:@"Ok", nil];
-			}
-			[alertView show];
-			[self.email becomeFirstResponder];
-		}
-	}];
+    
+    PFQuery *query = [PFUser query];
+    [query whereKey:@"username" equalTo:email];
+    [query getFirstObjectInBackgroundWithBlock:^(PFObject *target, NSError *error) {
+        if (!error) {
+            //Log user in
+            if ([target objectForKey:@"emailVerified"]){
+                [PFUser logInWithUsernameInBackground:email password:password block:^(PFUser *user, NSError *error) {
+                     [MBProgressHUD hideHUDForView:self.view.superview animated:YES];
+                    if (user) {
+                        //if successful, take the user to the main view
+                        [self performSegueWithIdentifier: @"LoginDone" sender: self];
+                    } else {
+                        //if failure, show error messages and take the user back
+                        self.done.enabled = [self shouldEnableDoneButton];
+                        UIAlertView *alertView = nil;
+                        if (error == nil) {
+                            alertView = [[UIAlertView alloc] initWithTitle:@"Couldn’t log in:\nThe username or password were wrong." message:nil delegate:self cancelButtonTitle:nil otherButtonTitles:@"Ok", nil];
+                        } else {
+                            alertView = [[UIAlertView alloc] initWithTitle:[[error userInfo] objectForKey:@"error"] message:nil delegate:self cancelButtonTitle:nil otherButtonTitles:@"Ok", nil];
+                        }
+                        [alertView show];
+                        [self.email becomeFirstResponder];
+                    }
+                }];
+            }else {
+                 [MBProgressHUD hideHUDForView:self.view.superview animated:YES];
+                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"You haven't verified your email" message:nil delegate:self cancelButtonTitle:nil otherButtonTitles:@"Ok", nil];
+                [alertView show];
+            }
+        }
+    }];
 }
 
 

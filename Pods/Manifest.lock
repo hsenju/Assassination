@@ -7,6 +7,8 @@ PODS:
     - Facebook-iOS-SDK (~> 3.11)
   - PebbleKit (2.2.0)
   - Reachability (3.1.1)
+  - TestFlightSDK (3.0.2)
+  - UIImageEffects (0.0.1)
   - UPPlatformSDK (1.1.5)
 
 DEPENDENCIES:
@@ -15,6 +17,8 @@ DEPENDENCIES:
   - Parse (~> 1.2.20)
   - PebbleKit (~> 2.2.0)
   - Reachability
+  - TestFlightSDK (~> 3.0.2)
+  - UIImageEffects (~> 0.0.1)
   - UPPlatformSDK (~> 1.1.5)
 
 SPEC CHECKSUMS:
@@ -24,6 +28,8 @@ SPEC CHECKSUMS:
   Parse: 28c0dc54f30201a369d29a2f76c09fa43b2add16
   PebbleKit: e027cb28a5b96adbc2560b314bea285fe181dc61
   Reachability: 8e9635e3cb4f98e7f825e51147f677ecc694d0e7
+  TestFlightSDK: 0c24c533748d0d84bfe7a3cb6036fa79124d84ee
+  UIImageEffects: 69cd1e1f8fc4042a8fefcf4a0727cbf213e4dbfb
   UPPlatformSDK: 84dbca6dd32286f1aea938e75ed35fcb83ecca07
 
 COCOAPODS: 0.33.1

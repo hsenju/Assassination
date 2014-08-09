@@ -6,7 +6,6 @@
 //  Copyright (c) 2014 Hikari Senju. All rights reserved.
 //
 #import <Parse/Parse.h>
-#import "TestFlight.h"
 #import "AppDelegate.h"
 #import "ViewController.h"
 
@@ -31,11 +30,10 @@
         UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
         ViewController *viewController = (ViewController*)[mainStoryboard instantiateViewControllerWithIdentifier: @"assassinate"];
         [navigationController pushViewController:viewController animated:YES];
-
 	}
 	
     //setup testflight
-    [TestFlight takeOff:@"357c9af8-5e83-4c6a-b33d-76866d3d15fe"];
+    //[TestFlight takeOff:@"357c9af8-5e83-4c6a-b33d-76866d3d15fe"];
 
     //initialize the pfimage class for storyboard
     [PFImageView class];
@@ -57,6 +55,9 @@
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
     //if we receive a remote notification,
     [PFPush handlePush:userInfo];
+    if ([UIApplication sharedApplication].applicationState == UIApplicationStateActive) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshView" object:nil];
+    }
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application

@@ -25,9 +25,6 @@
 		6BC5B9FD190E016A00E01566 /* AppIcon76x76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BC5B9ED190E016A00E01566 /* AppIcon76x76@2x.png */; };
 		6BC5B9FE190E016A00E01566 /* iTunesArtwork.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BC5B9EE190E016A00E01566 /* iTunesArtwork.png */; };
 		6BC5B9FF190E016A00E01566 /* iTunesArtwork@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BC5B9EF190E016A00E01566 /* iTunesArtwork@2x.png */; };
-		6BC5BA12190E0D4800E01566 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 6BC5BA0C190E0D4800E01566 /* README.md */; };
-		6BC5BA13190E0D4800E01566 /* release_notes.md in Resources */ = {isa = PBXBuildFile; fileRef = 6BC5BA0D190E0D4800E01566 /* release_notes.md */; };
-		6BC5BA16190E0DA900E01566 /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BC5BA0B190E0D4800E01566 /* libTestFlight.a */; };
 		6BCA48FA1904B37500977B33 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BCA48F91904B37500977B33 /* Foundation.framework */; };
 		6BCA48FC1904B37500977B33 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BCA48FB1904B37500977B33 /* CoreGraphics.framework */; };
 		6BCA48FE1904B37500977B33 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BCA48FD1904B37500977B33 /* UIKit.framework */; };
@@ -90,12 +87,6 @@
 		6BC5B9ED190E016A00E01566 /* AppIcon76x76@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon76x76@2x.png"; sourceTree = "<group>"; };
 		6BC5B9EE190E016A00E01566 /* iTunesArtwork.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iTunesArtwork.png; sourceTree = "<group>"; };
 		6BC5B9EF190E016A00E01566 /* iTunesArtwork@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iTunesArtwork@2x.png"; sourceTree = "<group>"; };
-		6BC5BA0B190E0D4800E01566 /* libTestFlight.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTestFlight.a; sourceTree = "<group>"; };
-		6BC5BA0C190E0D4800E01566 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
-		6BC5BA0D190E0D4800E01566 /* release_notes.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = release_notes.md; sourceTree = "<group>"; };
-		6BC5BA0E190E0D4800E01566 /* TestFlight+AsyncLogging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TestFlight+AsyncLogging.h"; sourceTree = "<group>"; };
-		6BC5BA0F190E0D4800E01566 /* TestFlight+ManualSessions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TestFlight+ManualSessions.h"; sourceTree = "<group>"; };
-		6BC5BA10190E0D4800E01566 /* TestFlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestFlight.h; sourceTree = "<group>"; };
 		6BCA48F61904B37500977B33 /* Assassination.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Assassination.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BCA48F91904B37500977B33 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6BCA48FB1904B37500977B33 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -157,7 +148,6 @@
 				6BCA49D11905A4CC00977B33 /* AudioToolbox.framework in Frameworks */,
 				6BCA49DF1905A52100977B33 /* StoreKit.framework in Frameworks */,
 				6BCA49D71905A4FD00977B33 /* libz.dylib in Frameworks */,
-				6BC5BA16190E0DA900E01566 /* libTestFlight.a in Frameworks */,
 				6BCA49D51905A4EA00977B33 /* CoreLocation.framework in Frameworks */,
 				6BCA48FC1904B37500977B33 /* CoreGraphics.framework in Frameworks */,
 				6BCA48FE1904B37500977B33 /* UIKit.framework in Frameworks */,
@@ -201,19 +191,6 @@
 			);
 			path = "App Icon [Squared]";
 			sourceTree = SOURCE_ROOT;
-		};
-		6BC5BA0A190E0D4800E01566 /* TestFlightSDK3.0.0 */ = {
-			isa = PBXGroup;
-			children = (
-				6BC5BA0B190E0D4800E01566 /* libTestFlight.a */,
-				6BC5BA0C190E0D4800E01566 /* README.md */,
-				6BC5BA0D190E0D4800E01566 /* release_notes.md */,
-				6BC5BA0E190E0D4800E01566 /* TestFlight+AsyncLogging.h */,
-				6BC5BA0F190E0D4800E01566 /* TestFlight+ManualSessions.h */,
-				6BC5BA10190E0D4800E01566 /* TestFlight.h */,
-			);
-			path = TestFlightSDK3.0.0;
-			sourceTree = "<group>";
 		};
 		6BCA48ED1904B37400977B33 = {
 			isa = PBXGroup;
@@ -290,7 +267,6 @@
 				6BCA49021904B37500977B33 /* InfoPlist.strings */,
 				6BCA49051904B37500977B33 /* main.m */,
 				6BCA49071904B37500977B33 /* Assassination-Prefix.pch */,
-				6BC5BA0A190E0D4800E01566 /* TestFlightSDK3.0.0 */,
 				6BC5B9DF190E016A00E01566 /* App Icon [Squared] */,
 			);
 			name = "Supporting Files";
@@ -397,7 +373,6 @@
 			files = (
 				6BCA49121904B37500977B33 /* Images.xcassets in Resources */,
 				6BC5B9F8190E016A00E01566 /* AppIcon60x60.png in Resources */,
-				6BC5BA12190E0D4800E01566 /* README.md in Resources */,
 				6BC5B9F2190E016A00E01566 /* AppIcon40x40.png in Resources */,
 				6BC5B9F3190E016A00E01566 /* AppIcon40x40@2x.png in Resources */,
 				6BC5B9F1190E016A00E01566 /* AppIcon29x29@2x.png in Resources */,
@@ -413,7 +388,6 @@
 				6BC5B9F4190E016A00E01566 /* AppIcon50x50.png in Resources */,
 				6BC5B9FA190E016A00E01566 /* AppIcon72x72.png in Resources */,
 				6BC5B9FB190E016A00E01566 /* AppIcon72x72@2x.png in Resources */,
-				6BC5BA13190E0D4800E01566 /* release_notes.md in Resources */,
 				6BC5B9FD190E016A00E01566 /* AppIcon76x76@2x.png in Resources */,
 				6BC5B9FC190E016A00E01566 /* AppIcon76x76.png in Resources */,
 			);
@@ -606,21 +580,13 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Hikari Senju (VYZ5P5363L)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					/Users/hsenju/Downloads,
-					/Users/hsenju/Documents,
-					/Users/hsenju/Documents/FacebookSDK,
 					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Assassination/Assassination-Prefix.pch";
 				INFOPLIST_FILE = "Assassination/Assassination-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					/Users/hsenju/Downloads/TestFlightSDK3.0.0,
-					"$(PROJECT_DIR)/Assassination/TestFlightSDK3.0.0",
-					"$(PROJECT_DIR)/TestFlightSDK3.0.0",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
@@ -636,21 +602,13 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Hikari Senju (VYZ5P5363L)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					/Users/hsenju/Downloads,
-					/Users/hsenju/Documents,
-					/Users/hsenju/Documents/FacebookSDK,
 					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Assassination/Assassination-Prefix.pch";
 				INFOPLIST_FILE = "Assassination/Assassination-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					/Users/hsenju/Downloads/TestFlightSDK3.0.0,
-					"$(PROJECT_DIR)/Assassination/TestFlightSDK3.0.0",
-					"$(PROJECT_DIR)/TestFlightSDK3.0.0",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;

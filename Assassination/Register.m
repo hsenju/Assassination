@@ -9,6 +9,7 @@
 #import "Register.h"
 #import "ViewController.h"
 #import <Parse/Parse.h>
+#import "MBProgressHUD.h"
 
 @interface Register ()
 
@@ -16,7 +17,10 @@
 - (void)textInputChanged:(NSNotification *)note;
 - (BOOL)shouldEnableDoneButton;
 
+@property (nonatomic, strong) MBProgressHUD *hud;
 @end
+
+
 
 @implementation Register
 
@@ -53,6 +57,8 @@
     self.navigationController.navigationBar.translucent = YES;
     UIWindow *window = [UIApplication sharedApplication].keyWindow;
     window.tintColor = [UIColor whiteColor];
+    
+    [[UITextField appearance] setTintColor:[UIColor blackColor]];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -114,6 +120,9 @@
 }
 
 - (void)registerUser {
+    self.hud = [MBProgressHUD showHUDAddedTo:self.view.superview animated:YES];
+    self.hud.labelText = NSLocalizedString(@"Loading", nil);
+    self.hud.dimBackground = YES;
     
     //get the user entries
 	NSString *name = self.email.text;
@@ -122,25 +131,67 @@
     NSString *uuid = [[NSUUID UUID] UUIDString];
     
     //initialize and save the user with the corresponding characterisitcs to parse
-	PFUser *user = [PFUser user];
-	user.username = name;
-	user.password = password;
-    user.email = email;
-    [user setObject:uuid forKey:@"uuid"];
-	[user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-		if (error) {
-            //if error in saving, show error alert
-			UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:[[error userInfo] objectForKey:@"error"] message:nil delegate:self cancelButtonTitle:nil otherButtonTitles:@"Ok", nil];
-			[alertView show];
-			self.done.enabled = [self shouldEnableDoneButton];
-			[self.email becomeFirstResponder];
-			return;
-		}
-        
-        //if there is not error, proceed to main view
-        [self performSegueWithIdentifier: @"RegisterDone" sender: self];
-        
-	}];
+    PFQuery *query = [PFQuery queryWithClassName:@"Targets"];
+    [query whereKey:@"assassin" equalTo:name];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *targets, NSError *error) {
+        if (!error) {
+            if (targets.count > 0){
+            	PFUser *user = [PFUser user];
+                user.username = name;
+                user.password = password;
+                user.email = email;
+                [user setObject:uuid forKey:@"uuid"];
+                [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                    [MBProgressHUD hideHUDForView:self.view.superview animated:YES];
+                    if (error) {
+                        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:[[error userInfo] objectForKey:@"error"] message:nil delegate:self cancelButtonTitle:nil otherButtonTitles:@"Ok", nil];
+                        [alertView show];
+                        self.done.enabled = [self shouldEnableDoneButton];
+                        [self.email becomeFirstResponder];
+                        return;
+                    }
+                    
+                    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"A message has been sent to your email address. Please log in once you have confirmed your email address" message:nil delegate:self cancelButtonTitle:nil otherButtonTitles:@"Ok", nil];
+                    [alertView show];
+                    [PFUser logOut];
+                    //if there is not error, proceed to main view
+                    [self performSegueWithIdentifier: @"RegistrationToLogin" sender: self];
+                    
+                    dispatch_queue_t pushQueue = dispatch_queue_create("Push Queue",NULL);
+                    dispatch_async(pushQueue, ^{
+                        PFQuery *targetQuery = [PFQuery queryWithClassName:@"Targets"];
+                        [targetQuery whereKey:@"target" equalTo:[[PFUser currentUser] objectForKey:@"username"]];
+                        [targetQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+                            for (int i =0; i<objects.count;i++){
+                                PFObject *target = objects[i];
+                                PFQuery *userQuery = [PFUser query];
+                                [userQuery whereKey:@"username" equalTo:[target objectForKey:@"target"]];
+                                PFQuery *pushQuery = [PFInstallation query];
+                                [pushQuery whereKey:@"user" matchesQuery:userQuery];
+                                PFPush *push = [[PFPush alloc] init];
+                                [push setQuery:pushQuery];
+                                [push setMessage:@"Your target joined the game."];
+                                [push sendPushInBackground];
+                            }
+                         }];
+                    });
+                    
+                }];
+            }
+            else{
+                [MBProgressHUD hideHUDForView:self.view.superview animated:YES];
+                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"You haven't been assigned any targets yet" message:nil delegate:self cancelButtonTitle:nil otherButtonTitles:@"Ok", nil];
+                [alertView show];
+            }
+        }
+        else{
+            [MBProgressHUD hideHUDForView:self.view.superview animated:YES];
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:[[error userInfo] objectForKey:@"error"] message:nil delegate:self cancelButtonTitle:nil otherButtonTitles:@"Ok", nil];
+            [alertView show];
+        }
+    }];
+    
+
 }
 
 

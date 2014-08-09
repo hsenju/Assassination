@@ -12,5 +12,7 @@
 #import "BLECentralController.h"
 
 @interface ViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UIView *overlay;
+@property (weak, nonatomic) IBOutlet UILabel *overlayLabel;
 
 @end

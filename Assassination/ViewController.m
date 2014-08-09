@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import <Parse/Parse.h>
+#import "UIImage+ImageEffects.h"
 
 @interface ViewController () <BLECenrtalDelegate>{
     NSMutableData *_imagedata;
@@ -34,6 +35,8 @@
     self.navigationController.navigationBarHidden = YES;
     self.assassinate.enabled = NO;
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshView:) name:@"refreshView" object:nil];
+    
     //find the name and the image of the target and display it
     PFQuery *findtarget = [PFQuery queryWithClassName:@"Targets"];
     [findtarget whereKey:@"assassin" equalTo: [[PFUser currentUser] objectForKey:@"email"]];
@@ -43,6 +46,7 @@
             [findtarget whereKey:@"email" equalTo: [target objectForKey:@"target"]];
             [findtarget getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
                 if (!error) {
+                    self.overlay.hidden = TRUE;
                     self.tname.text = [object objectForKey:@"fullname"];
                     self.timage.file =[object objectForKey:@"picture"];
                     [self.timage loadInBackground];
@@ -73,6 +77,7 @@
     if (![PFFacebookUtils isLinkedWithUser:[PFUser currentUser]]) {
         [PFFacebookUtils linkUser:[PFUser currentUser] permissions:nil block:^(BOOL succeeded, NSError *error) {
             if (succeeded) {
+                
                 FBRequest *request = [FBRequest requestForMe];
                 [request startWithCompletionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
                     if (!error) {
@@ -100,6 +105,32 @@
         [NSURLConnection connectionWithRequest:profilePictureURLRequest delegate:self];
     }
 }
+
+-(void)refreshView:(NSNotification *) notification {
+    //if the assassination is successful, disconnect from the current peripheral and start scouting for the uuid of the target's target
+    [_bluetoothController disconnectSignalStrength];
+    [_bluetoothController.manager cancelPeripheralConnection:_bluetoothController.connectedTarget];
+    _bluetoothController = [BLECentralController sharedInstance];
+    _bluetoothController.delegate = self;
+    [_bluetoothController startReceivingSignalStrenght];
+    
+    //upload the new target's image and name
+    PFQuery *findtarget = [PFQuery queryWithClassName:@"Targets"];
+    [findtarget whereKey:@"assassin" equalTo: [[PFUser currentUser] objectForKey:@"email"]];
+    [findtarget getFirstObjectInBackgroundWithBlock:^(PFObject *target, NSError *error) {
+        if (!error){
+            PFQuery *findtarget = [PFUser query];
+            [findtarget whereKey:@"email" equalTo: [target objectForKey:@"target"]];
+            [findtarget getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+                if (!error) {
+                    self.overlay.hidden = TRUE;
+                    self.tname.text = [object objectForKey:@"fullname"];
+                    self.timage.file =[object objectForKey:@"picture"];
+                    [self.timage loadInBackground];
+                }}];
+        }}];
+}
+
 - (void)heartbeat
 {
     //get the strength signal of the connected peripheral
@@ -190,7 +221,6 @@
                             [newtarget setObject:[targettarget objectForKey:@"target"] forKey:@"target"];
                             [newtarget saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                                 if (succeeded) {
-                                    
                                     //if the assassination is successful, disconnect from the current peripheral and start scouting for the uuid of the target's target
                                     [_bluetoothController disconnectSignalStrength];
                                     [_bluetoothController.manager cancelPeripheralConnection:_bluetoothController.connectedTarget];
