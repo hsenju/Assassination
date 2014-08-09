@@ -5,7 +5,7 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>D3CD5FC1-CA51-4A4A-B6B1-DE502A291A69</string>
+	<string>0CBFD503-99F3-40CA-9809-B66B1319EB5A</string>
 	<key>IDESourceControlProjectName</key>
 	<string>Assassination</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
@@ -21,7 +21,7 @@
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/hsenju/Assassination</string>
+	<string>https://github.com/hsenju/BalloonRefactored</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>

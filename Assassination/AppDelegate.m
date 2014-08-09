@@ -59,4 +59,18 @@
     [PFPush handlePush:userInfo];
 }
 
+- (void)applicationDidEnterBackground:(UIApplication *)application
+{
+    //heartbeat in background
+    NSTimer *heartbeatTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(heartbeat) userInfo:nil repeats:YES];
+    [heartbeatTimer fire];
+}
+
+- (void)heartbeat
+{
+    //get the strength signal of the connected peripheral
+    [[PFUser currentUser] setObject:[[NSDate alloc] init] forKey:@"currentTime"];
+    [[PFUser currentUser] saveInBackground];
+}
+
 @end

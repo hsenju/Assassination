@@ -23,7 +23,7 @@
 	self = [super init];
     
 	if(self) {
-        //initialize the cbcentral manager to start scouting for the uuid of the target
+        //initialize the cbcentral manager to start scouting for the uuid of the target and then to connect to it
 		self.manager = [[CBCentralManager alloc] initWithDelegate:self queue:nil];
         _rssiArrayIndex = 0;
         _connected = NO;
@@ -77,7 +77,7 @@
 
 - (void)centralManager:(CBCentralManager *)central didDiscoverPeripheral:(CBPeripheral *)peripheral advertisementData:(NSDictionary *)advertisementData RSSI:(NSNumber *)RSSI
 {
-    //if we found another phone advertising using bluetooth low energy, connect to that peripheral
+    //if we found another phone advertising the uuid that we are looking for, connect to that peripheral
     self.connectedTarget = peripheral;
     [self.manager connectPeripheral:self.connectedTarget options:nil];
 }
@@ -111,7 +111,7 @@
         return;
     }
     
-    // once we find the service that we are looking for, look for its dummy characteristic
+    //once we find the service that we are looking for, look for its dummy characteristic
     for (CBService *service in peripheral.services) {
         [peripheral discoverCharacteristics:@[[CBUUID UUIDWithString:@"00000000-0000-0000-0000-000000000000"]] forService:service];
     }
@@ -123,6 +123,7 @@
         return;
     }
     
+    //after we have found the characteristic, connect to the peripheral so we can start receiving signal strengths from it
     for (CBCharacteristic *characteristic in service.characteristics) {
         
         if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:@"00000000-0000-0000-0000-000000000000"]]) {
@@ -138,46 +139,49 @@
 
 - (void)peripheralDidReceiveNewRSSI:(CBPeripheral *)peripheral error:(NSError *)error
 {
+    //if we are just initiliazing the array of signal strength, create an array with five copies of the current signal strength
     if (!_rssiArray.count)
         _rssiArray = [[NSMutableArray alloc] initWithArray: @[peripheral.RSSI, peripheral.RSSI, peripheral.RSSI, peripheral.RSSI, peripheral.RSSI]];
 
+    //pop off a signal strength from the array and add the current signal strength to the array. We do this by having a counter to choose the element that we want to remove.
     [_rssiArray replaceObjectAtIndex:_rssiArrayIndex withObject:peripheral.RSSI];
     _rssiArrayIndex ++;
     
+    //if our counter in the array is greater than 4, reset it to 0.
     if (_rssiArrayIndex > 4)
         _rssiArrayIndex = 0;
     
     if (self.delegate) {
-       
+        //Once we have received a new signal strength indicator, average that strength with the previous strengths to figure out the current signal strength
         id tempDelegate = self.delegate;
         if ([tempDelegate respondsToSelector:@selector(didReceiveNewRSSI:)])
             [self.delegate didReceiveNewRSSI:[self averageSignalStrengths]];
     }
 }
 
-- (void)peripheral:(CBPeripheral *)peripheral didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error
-{
-}
-
 - (void)startReceivingSignalStrenght
 {
+    //receive a signal strength every second
     _readRSSITimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(readPeripheralRSSI) userInfo:nil repeats:YES];
     [_readRSSITimer fire];
 }
 
 - (void)disconnectSignalStrength
 {
+    //stop receiving signal strengths
     [_readRSSITimer invalidate];
     _readRSSITimer = nil;
 }
 
 - (void)readPeripheralRSSI
 {
+    //get the strength signal of the connected peripheral
     [self.connectedTarget readRSSI];
 }
 
 - (int)averageSignalStrengths
 {
+    //average the signal strengths
     int sum = 0;
     
     for (NSNumber *rssi in _rssiArray)

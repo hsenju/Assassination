@@ -1,0 +1,26 @@
+PODS:
+  - Bolts (1.1.1)
+  - Facebook-iOS-SDK (3.16.2):
+    - Bolts
+  - MBProgressHUD (0.8)
+  - Parse (1.2.20):
+    - Facebook-iOS-SDK (~> 3.11)
+  - Reachability (3.1.1)
+  - UPPlatformSDK (1.1.5)
+
+DEPENDENCIES:
+  - Facebook-iOS-SDK (~> 3.16.2)
+  - MBProgressHUD (~> 0.0)
+  - Parse (~> 1.2.20)
+  - Reachability
+  - UPPlatformSDK (~> 1.1.5)
+
+SPEC CHECKSUMS:
+  Bolts: 0ca796081c3e7c139bd86d6903c27f1b83036a5d
+  Facebook-iOS-SDK: 34eef640c2cc4c8618ba0f574ad2b290e07f1b4e
+  MBProgressHUD: c356980b0cd097f19acec959b49dca5eb8ec31be
+  Parse: 28c0dc54f30201a369d29a2f76c09fa43b2add16
+  Reachability: 8e9635e3cb4f98e7f825e51147f677ecc694d0e7
+  UPPlatformSDK: 84dbca6dd32286f1aea938e75ed35fcb83ecca07
+
+COCOAPODS: 0.33.1

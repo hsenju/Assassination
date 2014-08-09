@@ -1,0 +1,1 @@
+../../UPPlatformSDK/UPPlatformSDK/UPPlatformSDK/UPAuthViewController.h

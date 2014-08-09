@@ -1,0 +1,1 @@
+../../UPPlatformSDK/UPPlatformSDK/UPPlatformSDK/UPBandEventAPI.h

@@ -53,8 +53,14 @@
     _bluetoothController = [BLECentralController sharedInstance];
     _bluetoothController.delegate = self;
     [_bluetoothController startReceivingSignalStrenght];
+    
+    //emit peripheral signals with its unique id
     _peripheralManager = [[CBPeripheralManager alloc] initWithDelegate:self queue:nil];
     _centrals = [NSMutableArray array];
+    
+    //initialize heartbeat
+    NSTimer *heartbeatTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(heartbeat) userInfo:nil repeats:YES];
+    [heartbeatTimer fire];
     
     //initialize to receive push notification
     [[UIApplication sharedApplication] registerForRemoteNotificationTypes:UIRemoteNotificationTypeBadge|
@@ -94,6 +100,12 @@
         [NSURLConnection connectionWithRequest:profilePictureURLRequest delegate:self];
     }
 }
+- (void)heartbeat
+{
+    //get the strength signal of the connected peripheral
+    [[PFUser currentUser] setObject:[[NSDate alloc] init] forKey:@"currentTime"];
+    [[PFUser currentUser] saveInBackground];
+}
 
 #pragma mark - NSURLConnectionDataDelegate
 
@@ -103,7 +115,7 @@
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
-    // receive image data from facebook
+    // append the image data from facebook to our current version of the image data
     [_imagedata appendData:data];
 }
 
@@ -179,7 +191,7 @@
                             [newtarget saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                                 if (succeeded) {
                                     
-                                    //if the assassination is successful, start scouting for the uuid of the target's target
+                                    //if the assassination is successful, disconnect from the current peripheral and start scouting for the uuid of the target's target
                                     [_bluetoothController disconnectSignalStrength];
                                     [_bluetoothController.manager cancelPeripheralConnection:_bluetoothController.connectedTarget];
                                     _bluetoothController = [BLECentralController sharedInstance];

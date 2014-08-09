@@ -31,6 +31,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    //make the view pretty
     self.navigationController.navigationBarHidden = YES;
 }
 
