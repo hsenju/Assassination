@@ -258,6 +258,11 @@ THE SOFTWARE.
 
 See https://parse.com/about/terms
 
+## PebbleKit
+
+© 2014 Pebble Technology Corp. All rights reserved.
+
+
 ## Reachability
 
 Copyright (c) 2011, Tony Million.

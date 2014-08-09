@@ -24,6 +24,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-PebbleKit.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-Reachability.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -42,37 +47,42 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>20C2958309534515B2DE89F8</key>
+		<key>2ED159F12C3D4160AACBFBE8</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>5F50C4EFA6DC4A3D8C6F0402</key>
+		<key>2F19B0D376BE40A9B2C2FFCD</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>88A69BCE31A94900AC647CD6</key>
+		<key>2F7E6758908A492A8181272B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>9ADBA2CC15404D9FB44D5ABC</key>
+		<key>57BFC1B08DCF42C1BEBEE6F2</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>AB680D98D0124ADF9B57AF1F</key>
+		<key>B204B65FD1FA43DC8442F32D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>BB8BAC67DACD4F7BA48D237A</key>
+		<key>D4425495986548E9A1F38346</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>FE7751B1574A484A8DEAA38A</key>
+		<key>E0102C6C1B314201A7412C17</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F69915F329B145D38BDB67E4</key>
 		<dict>
 			<key>primary</key>
 			<true/>
