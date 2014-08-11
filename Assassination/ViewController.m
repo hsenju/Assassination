@@ -8,7 +8,6 @@
 
 #import "ViewController.h"
 #import <Parse/Parse.h>
-#import "UIImage+ImageEffects.h"
 
 @interface ViewController () <BLECenrtalDelegate>{
     NSMutableData *_imagedata;
