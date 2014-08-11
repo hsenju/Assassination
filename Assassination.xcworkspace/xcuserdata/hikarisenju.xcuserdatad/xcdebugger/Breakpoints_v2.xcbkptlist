@@ -9,13 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Assassination/Register.m"
-            timestampString = "429262266.865746"
+            filePath = "Assassination/AppDelegate.m"
+            timestampString = "429428130.760391"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "122"
-            endingLineNumber = "122"
-            landmarkName = "-registerUser"
+            startingLineNumber = "70"
+            endingLineNumber = "70"
+            landmarkName = "-applicationWillTerminate:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

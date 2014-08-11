@@ -44,11 +44,11 @@
                                     <constraint firstAttribute="height" constant="247" id="Qnm-Oy-MLV"/>
                                 </constraints>
                             </imageView>
-                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="37U-p9-YsQ">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="37U-p9-YsQ">
                                 <rect key="frame" x="20" y="154" width="280" height="237"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Your target hasn't registered yet" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="229" translatesAutoresizingMaskIntoConstraints="NO" id="ZuH-wY-f77">
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Your target hasn't registered yet" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="229" translatesAutoresizingMaskIntoConstraints="NO" id="ZuH-wY-f77">
                                         <rect key="frame" x="31" y="39" width="229" height="157"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="28"/>
@@ -59,7 +59,9 @@
                                 <color key="backgroundColor" white="1" alpha="0.5" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="ZuH-wY-f77" firstAttribute="leading" secondItem="37U-p9-YsQ" secondAttribute="leading" constant="31" id="BWP-xj-Aw0"/>
+                                    <constraint firstAttribute="bottom" secondItem="ZuH-wY-f77" secondAttribute="bottom" constant="41" id="VkO-ff-6AU"/>
                                     <constraint firstAttribute="centerX" secondItem="ZuH-wY-f77" secondAttribute="centerX" id="VqS-Ae-AtT"/>
+                                    <constraint firstItem="ZuH-wY-f77" firstAttribute="top" secondItem="37U-p9-YsQ" secondAttribute="top" constant="39" id="nKK-r6-0e7"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="self.layer.cornerRadius">
@@ -72,6 +74,7 @@
                         <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                         <constraints>
                             <constraint firstItem="VF1-eo-5Mj" firstAttribute="top" secondItem="uje-Y4-0BJ" secondAttribute="bottom" constant="18" id="94z-5T-0hn"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="37U-p9-YsQ" secondAttribute="bottom" constant="177" id="EnC-TW-76Q"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="7ec-5I-QXf" secondAttribute="bottom" constant="136" id="GTM-Ae-G24"/>
                             <constraint firstItem="uje-Y4-0BJ" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="36" id="GxA-L5-quV"/>
                             <constraint firstItem="37U-p9-YsQ" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="20" id="Iwx-cO-MtD"/>
@@ -80,6 +83,7 @@
                             <constraint firstItem="7ec-5I-QXf" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="45" id="Tcv-ht-Kdx"/>
                             <constraint firstItem="uje-Y4-0BJ" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="aBh-lF-Brm"/>
                             <constraint firstItem="7ec-5I-QXf" firstAttribute="top" secondItem="VF1-eo-5Mj" secondAttribute="bottom" constant="17" id="ayk-Sy-VT1"/>
+                            <constraint firstItem="37U-p9-YsQ" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="90" id="gLL-Kf-qcE"/>
                             <constraint firstItem="uje-Y4-0BJ" firstAttribute="centerX" secondItem="7ec-5I-QXf" secondAttribute="centerX" id="gn8-AM-A62"/>
                             <constraint firstItem="uje-Y4-0BJ" firstAttribute="centerX" secondItem="VF1-eo-5Mj" secondAttribute="centerX" id="m9b-xk-Km6"/>
                             <constraint firstItem="7ec-5I-QXf" firstAttribute="centerX" secondItem="VF1-eo-5Mj" secondAttribute="centerX" id="ylZ-T5-R4d"/>

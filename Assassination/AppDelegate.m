@@ -67,6 +67,14 @@
     [heartbeatTimer fire];
 }
 
+- (void)applicationWillTerminate:(UIApplication *)app
+{
+    PFObject *appKilled = [PFObject objectWithClassName:@"AppKilled"];
+    [appKilled setObject:[[PFUser currentUser] objectForKey:@"email"] forKey:@"email"];
+    
+    [appKilled save];
+}
+
 - (void)heartbeat
 {
     //get the strength signal of the connected peripheral
