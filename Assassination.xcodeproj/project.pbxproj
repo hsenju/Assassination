@@ -52,10 +52,7 @@
 		6BCA49DF1905A52100977B33 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BCA49DE1905A52100977B33 /* StoreKit.framework */; };
 		6BCA49E11905A53400977B33 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BCA49E01905A53400977B33 /* SystemConfiguration.framework */; };
 		6BCA49E41908618900977B33 /* BLECentralController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCA49E31908618900977B33 /* BLECentralController.m */; };
-		F7EEBD731995F528004D0C65 /* ExternalAccessory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7EEBD721995F528004D0C65 /* ExternalAccessory.framework */; };
 		F7EEBD751995F540004D0C65 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7EEBD741995F540004D0C65 /* CoreBluetooth.framework */; };
-		F7EEBD771995F54E004D0C65 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7EEBD761995F54E004D0C65 /* CoreMotion.framework */; };
-		F7EEBD791995F57B004D0C65 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7EEBD781995F57B004D0C65 /* MessageUI.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -124,10 +121,7 @@
 		6BCA49E21908618900977B33 /* BLECentralController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLECentralController.h; sourceTree = "<group>"; };
 		6BCA49E31908618900977B33 /* BLECentralController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLECentralController.m; sourceTree = "<group>"; };
 		B928389B757B429EBBD4F373 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		F7EEBD721995F528004D0C65 /* ExternalAccessory.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ExternalAccessory.framework; path = System/Library/Frameworks/ExternalAccessory.framework; sourceTree = SDKROOT; };
 		F7EEBD741995F540004D0C65 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
-		F7EEBD761995F54E004D0C65 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
-		F7EEBD781995F57B004D0C65 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,10 +129,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F7EEBD791995F57B004D0C65 /* MessageUI.framework in Frameworks */,
-				F7EEBD771995F54E004D0C65 /* CoreMotion.framework in Frameworks */,
 				F7EEBD751995F540004D0C65 /* CoreBluetooth.framework in Frameworks */,
-				F7EEBD731995F528004D0C65 /* ExternalAccessory.framework in Frameworks */,
 				6BCA49E11905A53400977B33 /* SystemConfiguration.framework in Frameworks */,
 				6BCA49DD1905A51800977B33 /* Security.framework in Frameworks */,
 				6BCA49DB1905A50F00977B33 /* QuartzCore.framework in Frameworks */,
@@ -215,10 +206,7 @@
 		6BCA48F81904B37500977B33 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				F7EEBD781995F57B004D0C65 /* MessageUI.framework */,
-				F7EEBD761995F54E004D0C65 /* CoreMotion.framework */,
 				F7EEBD741995F540004D0C65 /* CoreBluetooth.framework */,
-				F7EEBD721995F528004D0C65 /* ExternalAccessory.framework */,
 				6BC5B9DD190DB7D400E01566 /* libz.1.1.3.dylib */,
 				6BCA49E01905A53400977B33 /* SystemConfiguration.framework */,
 				6BCA49DE1905A52100977B33 /* StoreKit.framework */,
@@ -532,7 +520,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "8C7A6CBA-9FFC-4347-A472-5091D37CEC67";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -565,7 +553,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "8C7A6CBA-9FFC-4347-A472-5091D37CEC67";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -588,7 +576,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "8C7A6CBA-9FFC-4347-A472-5091D37CEC67";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -610,7 +598,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "8C7A6CBA-9FFC-4347-A472-5091D37CEC67";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
