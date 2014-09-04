@@ -39,10 +39,16 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uje-Y4-0BJ" customClass="PFImageView">
-                                <rect key="frame" x="36" y="31" width="248" height="247"/>
+                                <rect key="frame" x="36" y="67" width="248" height="247"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="247" id="Qnm-Oy-MLV"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="self.layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="self.layer.masksToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="37U-p9-YsQ">
                                 <rect key="frame" x="20" y="154" width="280" height="237"/>
@@ -73,12 +79,14 @@
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                         <constraints>
-                            <constraint firstItem="VF1-eo-5Mj" firstAttribute="top" secondItem="uje-Y4-0BJ" secondAttribute="bottom" constant="18" id="94z-5T-0hn"/>
+                            <constraint firstItem="uje-Y4-0BJ" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="3" id="0VT-lK-Ucp"/>
+                            <constraint firstItem="VF1-eo-5Mj" firstAttribute="top" secondItem="uje-Y4-0BJ" secondAttribute="bottom" constant="-18" id="94z-5T-0hn"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="37U-p9-YsQ" secondAttribute="bottom" constant="177" id="EnC-TW-76Q"/>
+                            <constraint firstItem="uje-Y4-0BJ" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="3" id="GJj-Gd-Ist"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="7ec-5I-QXf" secondAttribute="bottom" constant="136" id="GTM-Ae-G24"/>
                             <constraint firstItem="uje-Y4-0BJ" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="36" id="GxA-L5-quV"/>
                             <constraint firstItem="37U-p9-YsQ" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="20" id="Iwx-cO-MtD"/>
-                            <constraint firstItem="uje-Y4-0BJ" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="-33" id="Jqb-CH-501"/>
+                            <constraint firstItem="uje-Y4-0BJ" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="3" id="Jqb-CH-501"/>
                             <constraint firstAttribute="centerX" secondItem="37U-p9-YsQ" secondAttribute="centerX" id="Pcg-eG-pT4"/>
                             <constraint firstItem="7ec-5I-QXf" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="45" id="Tcv-ht-Kdx"/>
                             <constraint firstItem="uje-Y4-0BJ" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="aBh-lF-Brm"/>
